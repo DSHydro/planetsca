@@ -1,6 +1,11 @@
-#https://developers.planet.com/blog/2022/Dec/15/simplifying-your-complex-area-of-interest-a-planet-developers-deep-dive/
-
 import json
+
+import fiona
+from shapely.geometry import mapping, shape
+from shapely import concave_hull, unary_union
+from shapely.geometry import Polygon, mapping
+
+
 
 def vertex_count(file_path: str) -> int:
     """
@@ -33,3 +38,18 @@ def vertex_count(file_path: str) -> int:
                     coordinates_list.extend(polygon)
 
     return len(coordinates_list) - 1
+
+def reduce_vertex(file_path: str, ratio: int):
+    """
+    Reduces the vertex of a given geojson and creates a new geojson with new coordinates
+
+    Parameters:
+    - file_path: The path to the GeoJSON file.
+    """
+    with fiona.open(file_path) as collection:
+       hulls = [concave_hull(shape(feat["geometry"]), ratio) for feat in collection]
+        
+    dissolved_hulls = mapping(unary_union(hulls))
+    
+    with open('reduced_vertex.geojson', 'w') as f:
+        json.dump(dissolved_hulls, f)
