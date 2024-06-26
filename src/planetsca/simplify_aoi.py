@@ -90,3 +90,57 @@ def check_holes(file_path: str) -> bool:
     last_entry = coordinates_list[-1]
     
     return first_entry != last_entry
+
+
+def fill_holes(file_path: str):
+    """
+    Fills holes of GeoJSON by deleting interior ring coordinates and creating a new GeoJSON with new coordinates
+
+    Parameters:
+    - file_path: The path to the GeoJSON file.
+    """
+    with open(file_path) as f:
+        data = json.load(f)
+
+    coordinates_list = []
+
+    for feature in data["features"]:
+        geometry = feature["geometry"]
+        geometry_type = geometry["type"]
+        coordinates = geometry["coordinates"]
+
+        if geometry_type in ["Point", "LineString"]:
+            coordinates_list.append(coordinates)
+        elif geometry_type == "Polygon":
+            for polygon in coordinates:
+                coordinates_list.extend(polygon)
+        elif geometry_type == "MultiPolygon":
+            for multipolygon in coordinates:
+                for polygon in multipolygon:
+                    coordinates_list.extend(polygon)
+
+    new_coordinates_list = []
+    first_entry = coordinates_list[0]
+    new_coordinates_list.append(first_entry)
+    for coordinate in coordinates_list[1:]:
+        new_coordinates_list.append(coordinate)
+        if (coordinate == first_entry):
+            break
+    geojson = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [
+                        new_coordinates_list
+                    ]
+                },
+                "properties": {}
+            }
+        ]
+    }
+    
+    with open('filled_holes.geojson', 'w') as f:
+        json.dump(geojson, f)
