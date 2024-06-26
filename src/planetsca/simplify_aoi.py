@@ -39,6 +39,7 @@ def vertex_count(file_path: str) -> int:
 
     return len(coordinates_list) - 1
 
+
 def reduce_vertex(file_path: str, ratio: int):
     """
     Reduces the vertex of a given geojson and creates a new geojson with new coordinates
@@ -53,3 +54,39 @@ def reduce_vertex(file_path: str, ratio: int):
     
     with open('reduced_vertex.geojson', 'w') as f:
         json.dump(dissolved_hulls, f)
+
+
+def check_holes(file_path: str) -> bool:
+    """
+    Checks if GeoJSON has holes by comparing the first and last entry of coordinates.
+
+    Parameters:
+    - file_path: The path to the GeoJSON file.
+
+    Returns:
+    - bool: True if there are holes, false if there are no holes
+    """
+    with open(file_path) as f:
+        data = json.load(f)
+
+    coordinates_list = []
+
+    for feature in data["features"]:
+        geometry = feature["geometry"]
+        geometry_type = geometry["type"]
+        coordinates = geometry["coordinates"]
+
+        if geometry_type in ["Point", "LineString"]:
+            coordinates_list.append(coordinates)
+        elif geometry_type == "Polygon":
+            for polygon in coordinates:
+                coordinates_list.extend(polygon)
+        elif geometry_type == "MultiPolygon":
+            for multipolygon in coordinates:
+                for polygon in multipolygon:
+                    coordinates_list.extend(polygon)
+
+    first_entry = coordinates_list[0]
+    last_entry = coordinates_list[-1]
+    
+    return first_entry != last_entry
