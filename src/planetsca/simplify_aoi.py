@@ -7,15 +7,15 @@ from shapely.geometry import Polygon, mapping
 
 
 
-def vertex_count(file_path: str) -> int:
+def get_coordinates(file_path: str) -> list:
     """
-    Counts vertexes from a GeoJSON file.
+    Helper method for extracting a list of coordinates from a GeoJSON file
 
     Parameters:
     - file_path: The path to the GeoJSON file.
 
     Returns:
-    - int: Number of vertexes in geojson file
+    - list: Coordinates of a given GeoJSON file
     """
     with open(file_path) as f:
         data = json.load(f)
@@ -36,17 +36,23 @@ def vertex_count(file_path: str) -> int:
             for multipolygon in coordinates:
                 for polygon in multipolygon:
                     coordinates_list.extend(polygon)
+    return coordinates_list
 
-    return len(coordinates_list) - 1
 
-
-def reduce_vertex(file_path: str, ratio: int):
+def vertex_count(file_path: str) -> int:
     """
-    Reduces the vertex of a given geojson and creates a new geojson with new coordinates
+    Counts vertexes from a GeoJSON file.
 
     Parameters:
     - file_path: The path to the GeoJSON file.
+
+    Returns:
+    - int: Number of vertexes in geojson file
     """
+    return len(get_coordinates(file_path)) - 1
+
+
+def reduce_vertex(file_path: str, ratio: int):
     with fiona.open(file_path) as collection:
        hulls = [concave_hull(shape(feat["geometry"]), ratio) for feat in collection]
         
@@ -66,30 +72,11 @@ def check_holes(file_path: str) -> bool:
     Returns:
     - bool: True if there are holes, false if there are no holes
     """
-    with open(file_path) as f:
-        data = json.load(f)
+    coordinates_list = get_coordinates(file_path)
+    print(coordinates_list)
+    return coordinates_list[0] != coordinates_list[-1]
 
-    coordinates_list = []
-
-    for feature in data["features"]:
-        geometry = feature["geometry"]
-        geometry_type = geometry["type"]
-        coordinates = geometry["coordinates"]
-
-        if geometry_type in ["Point", "LineString"]:
-            coordinates_list.append(coordinates)
-        elif geometry_type == "Polygon":
-            for polygon in coordinates:
-                coordinates_list.extend(polygon)
-        elif geometry_type == "MultiPolygon":
-            for multipolygon in coordinates:
-                for polygon in multipolygon:
-                    coordinates_list.extend(polygon)
-
-    first_entry = coordinates_list[0]
-    last_entry = coordinates_list[-1]
-    
-    return first_entry != last_entry
+check_holes("overlapping_test.geojson")
 
 
 def fill_holes(file_path: str):
@@ -99,25 +86,7 @@ def fill_holes(file_path: str):
     Parameters:
     - file_path: The path to the GeoJSON file.
     """
-    with open(file_path) as f:
-        data = json.load(f)
-
-    coordinates_list = []
-
-    for feature in data["features"]:
-        geometry = feature["geometry"]
-        geometry_type = geometry["type"]
-        coordinates = geometry["coordinates"]
-
-        if geometry_type in ["Point", "LineString"]:
-            coordinates_list.append(coordinates)
-        elif geometry_type == "Polygon":
-            for polygon in coordinates:
-                coordinates_list.extend(polygon)
-        elif geometry_type == "MultiPolygon":
-            for multipolygon in coordinates:
-                for polygon in multipolygon:
-                    coordinates_list.extend(polygon)
+    coordinates_list = get_coordinates(file_path)
 
     new_coordinates_list = []
     first_entry = coordinates_list[0]
@@ -144,3 +113,38 @@ def fill_holes(file_path: str):
     
     with open('filled_holes.geojson', 'w') as f:
         json.dump(geojson, f)
+
+
+def check_overlap(file_path: str) -> bool:
+    """
+    Checks if two polygons overlap 
+
+    Parameters:
+    - file_path: The path to the GeoJSON file.
+
+    Returns:
+    - bool: True if there is an overlap, false if there is no overlap
+    """
+    coordinates_list = get_coordinates(file_path)
+    polygon1 = []
+    polygon2 = []
+    first_entry = coordinates_list[0]
+    polygon1.append(first_entry)
+    divider = 0
+    for coordinate in coordinates_list[1:]:
+        polygon1.append(coordinate)
+        if (coordinate == first_entry):
+            divider = coordinates_list[1:].index(coordinate) + 1
+            break
+    first_entry = coordinates_list[divider]
+    for coordinate in coordinates_list[divider+1:]:
+        polygon2.append(coordinate)
+        if (coordinate == first_entry):
+            divider = coordinates_list[1:].index(coordinate) + 1
+            break
+    
+    return Polygon(polygon1).intersects(Polygon(polygon2))
+    
+
+
+    
