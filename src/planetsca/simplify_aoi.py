@@ -8,7 +8,7 @@ from shapely.geometry import Polygon, mapping
 
 def get_coordinates(file_path: str) -> list:
     """
-    Gets coordinates from a GeoJSON file
+    Gets coordinates from a GeoJSON file - Helper Method
 
     Parameters:
     - file_path: The path to the GeoJSON file
@@ -193,4 +193,61 @@ def fix_overlap(file_path: str):
     }
     
     with open('corrected_overlap.geojson', 'w') as f:
+        json.dump(geojson, f)
+
+
+def clipping_check(file_path: str, AOI_Coordinates: list) -> bool:
+    """
+    Checks if a given polygon clips outside the contracted AOI coordinates
+
+    Parameters:
+    - file_path: The path to the GeoJSON file
+    - AOI_Coordinates: List of coordinates representing the AOI bounds
+
+     Returns:
+    - bool: True if it clips outside and false if it does not
+    """
+    given_polygon = Polygon(get_coordinates(file_path))
+
+    first_array = AOI_Coordinates[0]
+    last_array = AOI_Coordinates[-1]
+
+    if first_array != last_array:
+        AOI_Coordinates.append(first_array.copy())
+
+
+    AOI_Bounds = Polygon(AOI_Coordinates)
+
+    return not given_polygon.within(AOI_Bounds)
+
+
+def fix_clipping(file_path: str, AOI_Coordinates: list):
+    """
+    Deletes all parts of a Polygon that exceed the AOI coordinate bounds
+
+    Parameters:
+    - file_path: The path to the GeoJSON file
+    - AOI_Coordinates: List of coordinates representing the AOI bounds
+    """
+
+    first_array = AOI_Coordinates[0]
+    last_array = AOI_Coordinates[-1]
+
+    if first_array != last_array:
+        AOI_Coordinates.append(first_array.copy())
+    
+    combined_polygon = Polygon(AOI_Coordinates).intersection(Polygon(get_coordinates(file_path)))
+
+    geojson = {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": mapping(combined_polygon),
+                "properties": {}
+            }
+        ]
+    }
+    
+    with open('corrected_clipping.geojson', 'w') as f:
         json.dump(geojson, f)
