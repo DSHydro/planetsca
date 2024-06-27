@@ -288,7 +288,7 @@ def simplify(file_path: str, ratio: int, AOI_Coordinates: list):
 
     try:
         os.rename(update_file_path, "Simplified.geojson")
-        print("Your new simplified file is called Simplified.geojson")
+        print("Your new simplified file is called Simplified.geojson. For more information on Planet's AOI Geometry Limits, check out this link: https://developers.planet.com/docs/subscriptions/tools/")
     except PermissionError:
         print("Permission denied.")
     
