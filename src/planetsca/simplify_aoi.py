@@ -1,9 +1,9 @@
 import json
-
 import fiona
 from shapely.geometry import mapping, shape
 from shapely import concave_hull, unary_union
 from shapely.geometry import Polygon, mapping
+import os
 
 
 def get_coordinates(file_path: str) -> list:
@@ -251,3 +251,51 @@ def fix_clipping(file_path: str, AOI_Coordinates: list):
     
     with open('corrected_clipping.geojson', 'w') as f:
         json.dump(geojson, f)
+
+
+def simplify(file_path: str, ratio: int, AOI_Coordinates: list):
+    """
+    Runs all checks and fixes to adhere to Planet's AOI Geometry Limits
+
+    Parameters:
+    - file_path: The path to the GeoJSON file
+    - AOI_Coordinates: List of coordinates representing the AOI bounds
+    """
+    update_file_path = file_path
+    #Vertices Check
+    if (vertex_count(file_path) > 500):
+        print("Too many vertices, reducing number")
+        reduce_vertex(update_file_path)
+        update_file_path = 'reduced_vertex.geojson'
+        
+    #Holes and Exterior Rings Check
+    if (check_hole(update_file_path)):
+        print("Polygon contains hole, filling hole")
+        fill_holes(update_file_path)
+        update_file_path = 'filled_holes.geojson'
+        
+    #Overlapping and Intersections Check
+    if (check_overlap(update_file_path)):
+        print("Polygons are overlapping, combining polygons to eliminate overlap")
+        fix_overlap(update_file_path)
+        update_file_path = 'corrected_overlap.geojson'
+        
+    #Clipping outside AOI Check
+    if (clipping_check(update_file_path, AOI_Coordinates)):
+        print("Polygon clips outside of AOI, cutting outside areas")
+        fix_clipping(update_file_path, AOI_Coordinates)
+        update_file_path = 'corrected_clipping.geojson'
+
+    try:
+        os.rename(update_file_path, "Simplified.geojson")
+        print("Your new simplified file is called Simplified.geojson")
+    except PermissionError:
+        print("Permission denied.")
+    
+    if os.path.exists('reduced_vertex.geojson'):
+        os.remove('reduced_vertex.geojson')
+    if os.path.exists('filled_holes.geojson'):
+        os.remove('filled_holes.geojson')
+    if os.path.exists('corrected_overlap.geojson'):
+        os.remove('corrected_overlap.geojson')
+        
