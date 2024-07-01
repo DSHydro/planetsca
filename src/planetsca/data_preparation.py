@@ -1,12 +1,12 @@
 import warnings
 
+import geopandas as gpd
 import numpy as np
 import pandas as pd
 import rasterio
+from pandas import DataFrame
 from rasterio import features
 from rasterio.enums import MergeAlg
-from pandas import DataFrame
-import geopandas as gpd
 
 warnings.filterwarnings("ignore")
 
@@ -67,7 +67,9 @@ def data_training_existing(dir_samples: str) -> DataFrame:
     return df_train
 
 
-def data_training_new(dir_ROI: str, dir_raster: str, dir_ROIraster: str, dir_samples_root: str) -> DataFrame: 
+def data_training_new(
+    dir_ROI: str, dir_raster: str, dir_ROIraster: str, dir_samples_root: str
+) -> DataFrame:
     """
     Creates training data from scratch
 
@@ -75,14 +77,14 @@ def data_training_new(dir_ROI: str, dir_raster: str, dir_ROIraster: str, dir_sam
     - dir_ROI: Directory path to regions of interest
     - dir_raster: Directory to Planet image for training
     - dir_ROIraster: Directory path to a ROI converted to shape mask
-    - dir_samples_root: Directory path to csv of training data extracted from images 
+    - dir_samples_root: Directory path to csv of training data extracted from images
 
     Returns:
     - DataFrame: DataFrame of training data
     """
-        
-    flag_output = True    
-    
+
+    flag_output = True
+
     # rasterize ROI
     ROI = vector_rasterize(
         dir_vector=dir_ROI,
@@ -107,5 +109,5 @@ def data_training_new(dir_ROI: str, dir_raster: str, dir_ROIraster: str, dir_sam
     df_train.label = np.where(df_train.label > 0, 1, 0)
     dir_samples = dir_samples_root + str(int(len(df_train.index) / 1000)) + "k.csv"
     df_train.to_csv(dir_samples, index=False)
-        
+
     return df_train

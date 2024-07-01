@@ -28,7 +28,8 @@ data access.
 
 ## Installation <a name="installation"></a>
 
-To install the python package, use(Ensure Python is downloaded, check bottom of README for VENV instructions):
+To install the python package, use(Ensure Python is downloaded, check bottom of
+README for VENV instructions):
 
 ```bash
 pip install -i https://test.pypi.org/simple/ planetsca
