@@ -41,6 +41,7 @@ def build(session: nox.Session) -> None:
     session.install("build")
     session.run("python", "-m", "build")
 
+
 @nox.session(reuse_venv=True)
 def docs(session: nox.Session) -> None:
     """
@@ -71,6 +72,7 @@ def docs(session: nox.Session) -> None:
     else:
         session.run("sphinx-build", "--keep-going", *shared_args)
 
+
 @nox.session
 def build_api_docs(session: nox.Session) -> None:
     """
@@ -87,4 +89,3 @@ def build_api_docs(session: nox.Session) -> None:
         "--force",
         "src/<package-name-here>",
     )
-

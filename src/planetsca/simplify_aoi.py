@@ -1,9 +1,9 @@
 import json
-import fiona
-from shapely.geometry import mapping, shape
-from shapely import concave_hull, unary_union
-from shapely.geometry import Polygon, mapping
 import os
+
+import fiona
+from shapely import concave_hull, unary_union
+from shapely.geometry import Polygon, mapping, shape
 
 
 def get_coordinates(file_path: str) -> list:
@@ -37,6 +37,7 @@ def get_coordinates(file_path: str) -> list:
                     coordinates_list.extend(polygon)
     return coordinates_list
 
+
 def vertex_count(file_path: str) -> int:
     """
     Counts vertexes from a GeoJSON file.
@@ -59,11 +60,11 @@ def reduce_vertex(file_path: str, ratio: int):
     - ratio: Sets the concave_hull ratio
     """
     with fiona.open(file_path) as collection:
-       hulls = [concave_hull(shape(feat["geometry"]), ratio) for feat in collection]
-        
+        hulls = [concave_hull(shape(feat["geometry"]), ratio) for feat in collection]
+
     dissolved_hulls = mapping(unary_union(hulls))
-    
-    with open('reduced_vertex.geojson', 'w') as f:
+
+    with open("reduced_vertex.geojson", "w") as f:
         json.dump(dissolved_hulls, f)
 
 
@@ -80,9 +81,9 @@ def check_hole(file_path: str) -> bool:
     with open(file_path) as f:
         geojson = json.load(f)
 
-    for feature in geojson['features']:
-        if feature['geometry']['type'] == 'Polygon':
-            coordinates = feature['geometry']['coordinates']
+    for feature in geojson["features"]:
+        if feature["geometry"]["type"] == "Polygon":
+            coordinates = feature["geometry"]["coordinates"]
             if len(coordinates) > 1:
                 return True
     return False
@@ -102,25 +103,20 @@ def fill_holes(file_path: str):
     new_coordinates_list.append(first_entry)
     for coordinate in coordinates_list[1:]:
         new_coordinates_list.append(coordinate)
-        if (coordinate == first_entry):
+        if coordinate == first_entry:
             break
     geojson = {
         "type": "FeatureCollection",
         "features": [
             {
                 "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                        new_coordinates_list
-                    ]
-                },
-                "properties": {}
+                "geometry": {"type": "Polygon", "coordinates": [new_coordinates_list]},
+                "properties": {},
             }
-        ]
+        ],
     }
-    
-    with open('filled_holes.geojson', 'w') as f:
+
+    with open("filled_holes.geojson", "w") as f:
         json.dump(geojson, f)
 
 
@@ -142,16 +138,16 @@ def check_overlap(file_path: str) -> bool:
     divider = 0
     for coordinate in coordinates_list[1:]:
         polygon1.append(coordinate)
-        if (coordinate == first_entry):
+        if coordinate == first_entry:
             divider = coordinates_list[1:].index(coordinate) + 1
             break
     first_entry = coordinates_list[divider]
-    for coordinate in coordinates_list[divider+1:]:
+    for coordinate in coordinates_list[divider + 1 :]:
         polygon2.append(coordinate)
-        if (coordinate == first_entry):
+        if coordinate == first_entry:
             divider = coordinates_list[1:].index(coordinate) + 1
             break
-    
+
     return Polygon(polygon1).intersects(Polygon(polygon2))
 
 
@@ -170,13 +166,13 @@ def fix_overlap(file_path: str):
     divider = 0
     for coordinate in coordinates_list[1:]:
         polygon1.append(coordinate)
-        if (coordinate == first_entry):
+        if coordinate == first_entry:
             divider = coordinates_list[1:].index(coordinate) + 1
             break
     first_entry = coordinates_list[divider]
-    for coordinate in coordinates_list[divider+1:]:
+    for coordinate in coordinates_list[divider + 1 :]:
         polygon2.append(coordinate)
-        if (coordinate == first_entry):
+        if coordinate == first_entry:
             divider = coordinates_list[1:].index(coordinate) + 1
             break
     combined_polygon = unary_union([Polygon(polygon1), Polygon(polygon2)])
@@ -184,15 +180,11 @@ def fix_overlap(file_path: str):
     geojson = {
         "type": "FeatureCollection",
         "features": [
-            {
-                "type": "Feature",
-                "geometry": mapping(combined_polygon),
-                "properties": {}
-            }
-        ]
+            {"type": "Feature", "geometry": mapping(combined_polygon), "properties": {}}
+        ],
     }
-    
-    with open('corrected_overlap.geojson', 'w') as f:
+
+    with open("corrected_overlap.geojson", "w") as f:
         json.dump(geojson, f)
 
 
@@ -215,7 +207,6 @@ def clipping_check(file_path: str, AOI_Coordinates: list) -> bool:
     if first_array != last_array:
         AOI_Coordinates.append(first_array.copy())
 
-
     AOI_Bounds = Polygon(AOI_Coordinates)
 
     return not given_polygon.within(AOI_Bounds)
@@ -235,21 +226,19 @@ def fix_clipping(file_path: str, AOI_Coordinates: list):
 
     if first_array != last_array:
         AOI_Coordinates.append(first_array.copy())
-    
-    combined_polygon = Polygon(AOI_Coordinates).intersection(Polygon(get_coordinates(file_path)))
+
+    combined_polygon = Polygon(AOI_Coordinates).intersection(
+        Polygon(get_coordinates(file_path))
+    )
 
     geojson = {
         "type": "FeatureCollection",
         "features": [
-            {
-                "type": "Feature",
-                "geometry": mapping(combined_polygon),
-                "properties": {}
-            }
-        ]
+            {"type": "Feature", "geometry": mapping(combined_polygon), "properties": {}}
+        ],
     }
-    
-    with open('corrected_clipping.geojson', 'w') as f:
+
+    with open("corrected_clipping.geojson", "w") as f:
         json.dump(geojson, f)
 
 
@@ -262,40 +251,41 @@ def simplify(file_path: str, ratio: int, AOI_Coordinates: list):
     - AOI_Coordinates: List of coordinates representing the AOI bounds
     """
     update_file_path = file_path
-    #Vertices Check
-    if (vertex_count(file_path) > 500):
+    # Vertices Check
+    if vertex_count(file_path) > 500:
         print("Too many vertices, reducing number")
         reduce_vertex(update_file_path)
-        update_file_path = 'reduced_vertex.geojson'
-        
-    #Holes and Exterior Rings Check
-    if (check_hole(update_file_path)):
+        update_file_path = "reduced_vertex.geojson"
+
+    # Holes and Exterior Rings Check
+    if check_hole(update_file_path):
         print("Polygon contains hole, filling hole")
         fill_holes(update_file_path)
-        update_file_path = 'filled_holes.geojson'
-        
-    #Overlapping and Intersections Check
-    if (check_overlap(update_file_path)):
+        update_file_path = "filled_holes.geojson"
+
+    # Overlapping and Intersections Check
+    if check_overlap(update_file_path):
         print("Polygons are overlapping, combining polygons to eliminate overlap")
         fix_overlap(update_file_path)
-        update_file_path = 'corrected_overlap.geojson'
-        
-    #Clipping outside AOI Check
-    if (clipping_check(update_file_path, AOI_Coordinates)):
+        update_file_path = "corrected_overlap.geojson"
+
+    # Clipping outside AOI Check
+    if clipping_check(update_file_path, AOI_Coordinates):
         print("Polygon clips outside of AOI, cutting outside areas")
         fix_clipping(update_file_path, AOI_Coordinates)
-        update_file_path = 'corrected_clipping.geojson'
+        update_file_path = "corrected_clipping.geojson"
 
     try:
         os.rename(update_file_path, "Simplified.geojson")
-        print("Your new simplified file is called Simplified.geojson. For more information on Planet's AOI Geometry Limits, check out this link: https://developers.planet.com/docs/subscriptions/tools/")
+        print(
+            "Your new simplified file is called Simplified.geojson. For more information on Planet's AOI Geometry Limits, check out this link: https://developers.planet.com/docs/subscriptions/tools/"
+        )
     except PermissionError:
         print("Permission denied.")
-    
-    if os.path.exists('reduced_vertex.geojson'):
-        os.remove('reduced_vertex.geojson')
-    if os.path.exists('filled_holes.geojson'):
-        os.remove('filled_holes.geojson')
-    if os.path.exists('corrected_overlap.geojson'):
-        os.remove('corrected_overlap.geojson')
-        
+
+    if os.path.exists("reduced_vertex.geojson"):
+        os.remove("reduced_vertex.geojson")
+    if os.path.exists("filled_holes.geojson"):
+        os.remove("filled_holes.geojson")
+    if os.path.exists("corrected_overlap.geojson"):
+        os.remove("corrected_overlap.geojson")
