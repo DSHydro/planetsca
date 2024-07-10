@@ -1,0 +1,648 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="" lang="" version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="">
+    <link rel="icon" type="image/x-icon" href="">
+
+  
+  <title>planetsca package &mdash; PlanetSCA 1.0.0 documentation</title>
+  
+
+  
+
+  
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'/>
+
+
+  <link rel="stylesheet" href="_static/css/img.css" type="text/css"/>
+  
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/pdj.css" type="text/css" />
+  
+
+  
+
+  <link rel="stylesheet" href="_static/css/darker.css" type="text/css" media="(prefers-color-scheme: dark)"/>
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="PlanetSCA 1.0.0 documentation" href="index.html"/>
+        <link rel="prev" title="Welcome to PlanetSCA’s documentation!" href="index.html"/>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="public" />
+    <meta name="robots" content="follow, all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <script type="module" src="https://googlechromelabs.github.io/dark-mode-toggle/src/dark-mode-toggle.mjs"></script>
+
+  </head>
+
+  <body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+	
+        <a href="index.html" class="fa fa-home"> PlanetSCA </a>
+	
+	
+        <div role="search">
+	  
+	  <form id ="rtd-search-form" class="wy-form"
+		action="search.html" method="get">
+	    <input type="text" name="q" placeholder="Search docs" />
+	    <input type="hidden" name="check_keywords" value="yes" />
+	    <input type="hidden" name="area" value="default" />
+	  </form>
+	  
+	</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	
+          
+          
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">planetsca package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-planetsca.data_gathering">planetsca.data_gathering module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-planetsca.data_preparation">planetsca.data_preparation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-planetsca.model_training">planetsca.model_training module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-planetsca.prediction_evaluation">planetsca.prediction_evaluation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-planetsca.search_filters">planetsca.search_filters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-planetsca.simplify_aoi">planetsca.simplify_aoi module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-planetsca.version">planetsca.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-planetsca">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+
+      </div>
+      &nbsp;
+    </nav>
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      <nav class="wy-nav-top" id="barra-mobile" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">PlanetSCA </a>
+      </nav>
+
+      <div class="wy-nav-content">
+	<div class="fundo-claro">
+	</div>
+	<div class="fundo-escuro">
+	</div>
+
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+	    
+	    <!-- <ul class="wy-breadcrumbs"> -->
+	    <!--   <li><a href="#">Docs</a> &raquo;</li> -->
+
+	    <!--   <li>Features</li> -->
+	    <!--   <li class="wy-breadcrumbs-aside"> -->
+
+	    <!-- 	<a href="_sources/index.txt" rel="nofollow"> View page source</a> -->
+
+	    <!--   </li> -->
+	    <!-- </ul> -->
+	    <!-- <hr/> -->
+	  </div>
+          <div role="main" class="">
+
+	    <div id="content" class="hfeed entry-container hentry">
+      	<div id="dark-mode-toggle-container">
+	  <dark-mode-toggle appearance="toggle" dark="switch to light mode" light="switch to dark mode">
+	  </dark-mode-toggle>
+	</div>
+  <section id="planetsca-package">
+<h1>planetsca package<a class="headerlink" href="#planetsca-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-planetsca.data_gathering">
+<span id="planetsca-data-gathering-module"></span><h2>planetsca.data_gathering module<a class="headerlink" href="#module-planetsca.data_gathering" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.api_search">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">api_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apiKey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#api_search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.api_search" title="Link to this definition">¶</a></dt>
+<dd><p>Submit a quick search request to the Planet API</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>item_type: string</dt><dd><p>name of a Planet item type, <a class="reference external" href="https://developers.planet.com/docs/apis/data/items-assets/#item-types">https://developers.planet.com/docs/apis/data/items-assets/#item-types</a></p>
+</dd>
+<dt>filter: dict</dt><dd><p>dictionary of one or more filters, <a class="reference external" href="https://developers.planet.com/docs/apis/data/searches-filtering/#field-filters">https://developers.planet.com/docs/apis/data/searches-filtering/#field-filters</a></p>
+</dd>
+<dt>apiKey: string</dt><dd><p>your Planet API key, <a class="reference external" href="https://developers.planet.com/quickstart/apis/#find-your-api-key">https://developers.planet.com/quickstart/apis/#find-your-api-key</a></p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>result: requests.models.Response</dt><dd><p>response from the Planet API</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.build_payload">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">build_payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bundle_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aoi_coordinates</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#build_payload"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.build_payload" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.display_image">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">display_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#display_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.display_image" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.domain_shape">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">domain_shape</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#domain_shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.domain_shape" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.download_orders">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">download_orders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order_urls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_direc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apiKey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#download_orders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.download_orders" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.download_results">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">download_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apiKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#download_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.download_results" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.downloadable_PlanetIDs">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">downloadable_PlanetIDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain_geometry</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#downloadable_PlanetIDs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.downloadable_PlanetIDs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.id_gemoetry_lists">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">id_gemoetry_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geojson_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gdf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#id_gemoetry_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.id_gemoetry_lists" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.order_now">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">order_now</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apiKey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#order_now"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.order_now" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.order_status">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">order_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">apiKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#order_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.order_status" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.retrieve_model">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">retrieve_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_direc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#retrieve_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.retrieve_model" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.save_data_to_csv">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">save_data_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order_urls</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#save_data_to_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.save_data_to_csv" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_gathering.submit_orders">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_gathering.</span></span><span class="sig-name descname"><span class="pre">submit_orders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bundle_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apiKey</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_gathering.html#submit_orders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_gathering.submit_orders" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-planetsca.data_preparation">
+<span id="planetsca-data-preparation-module"></span><h2>planetsca.data_preparation module<a class="headerlink" href="#module-planetsca.data_preparation" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_preparation.data_training_existing">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_preparation.</span></span><span class="sig-name descname"><span class="pre">data_training_existing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/planetsca/data_preparation.html#data_training_existing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_preparation.data_training_existing" title="Link to this definition">¶</a></dt>
+<dd><p>Creates training data from a csv file</p>
+<p>Parameters:
+- dir_samples: File location of the csv file</p>
+<p>Returns:
+- DataFrame: DataFrame of training data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_preparation.data_training_new">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_preparation.</span></span><span class="sig-name descname"><span class="pre">data_training_new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_ROI</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_ROIraster</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_samples_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/planetsca/data_preparation.html#data_training_new"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_preparation.data_training_new" title="Link to this definition">¶</a></dt>
+<dd><p>Creates training data from scratch</p>
+<p>Parameters:
+- dir_ROI: Directory path to regions of interest
+- dir_raster: Directory to Planet image for training
+- dir_ROIraster: Directory path to a ROI converted to shape mask
+- dir_samples_root: Directory path to csv of training data extracted from images</p>
+<p>Returns:
+- DataFrame: DataFrame of training data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.data_preparation.vector_rasterize">
+<span class="sig-prename descclassname"><span class="pre">planetsca.data_preparation.</span></span><span class="sig-name descname"><span class="pre">vector_rasterize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/data_preparation.html#vector_rasterize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.data_preparation.vector_rasterize" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-planetsca.model_training">
+<span id="planetsca-model-training-module"></span><h2>planetsca.model_training module<a class="headerlink" href="#module-planetsca.model_training" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.model_training.retrieve_model">
+<span class="sig-prename descclassname"><span class="pre">planetsca.model_training.</span></span><span class="sig-name descname"><span class="pre">retrieve_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_direc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/model_training.html#retrieve_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.model_training.retrieve_model" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.model_training.train_model">
+<span class="sig-prename descclassname"><span class="pre">planetsca.model_training.</span></span><span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repeats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_train</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/model_training.html#train_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.model_training.train_model" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-planetsca.prediction_evaluation">
+<span id="planetsca-prediction-evaluation-module"></span><h2>planetsca.prediction_evaluation module<a class="headerlink" href="#module-planetsca.prediction_evaluation" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.prediction_evaluation.run_sca_prediction">
+<span class="sig-prename descclassname"><span class="pre">planetsca.prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">run_sca_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/prediction_evaluation.html#run_sca_prediction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.prediction_evaluation.run_sca_prediction" title="Link to this definition">¶</a></dt>
+<dd><p>This function predicts binary snow cover for planet satellite images using the pre-trained random forest model</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>dir_raster: string</dt><dd><p>the directory or the file of planet images</p>
+</dd>
+<dt>dir_out: string</dt><dd><p>the directory where output snow cover images will be stored</p>
+</dd>
+<dt>nodata_flag: int, default=9</dt><dd><p>the value used to represent no data in the predicted snow cover image, default value is 9</p>
+</dd>
+<dt>model:</dt><dd><p>the model used to predict snow cover</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.prediction_evaluation.run_sca_prediction_band">
+<span class="sig-prename descclassname"><span class="pre">planetsca.prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">run_sca_prediction_band</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/prediction_evaluation.html#run_sca_prediction_band"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.prediction_evaluation.run_sca_prediction_band" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.prediction_evaluation.run_sca_prediction_fusion">
+<span class="sig-prename descclassname"><span class="pre">planetsca.prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">run_sca_prediction_fusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/prediction_evaluation.html#run_sca_prediction_fusion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.prediction_evaluation.run_sca_prediction_fusion" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.prediction_evaluation.run_sca_prediction_meadows">
+<span class="sig-prename descclassname"><span class="pre">planetsca.prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">run_sca_prediction_meadows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/prediction_evaluation.html#run_sca_prediction_meadows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.prediction_evaluation.run_sca_prediction_meadows" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.prediction_evaluation.single_image_evaluation">
+<span class="sig-prename descclassname"><span class="pre">planetsca.prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">single_image_evaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/prediction_evaluation.html#single_image_evaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.prediction_evaluation.single_image_evaluation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-planetsca.search_filters">
+<span id="planetsca-search-filters-module"></span><h2>planetsca.search_filters module<a class="headerlink" href="#module-planetsca.search_filters" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.search_filters.make_AndFilter">
+<span class="sig-prename descclassname"><span class="pre">planetsca.search_filters.</span></span><span class="sig-name descname"><span class="pre">make_AndFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/planetsca/search_filters.html#make_AndFilter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.search_filters.make_AndFilter" title="Link to this definition">¶</a></dt>
+<dd><p>Make a filter by combining two or more filters with an AND operator</p>
+<section id="id2">
+<h3>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>filters: list[dict]</dt><dd><p>list of filters to combine with AND</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id3">
+<h3>Returns<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>filter: dict</dt><dd><p>combined filters for the Planet API</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.search_filters.make_OrFilter">
+<span class="sig-prename descclassname"><span class="pre">planetsca.search_filters.</span></span><span class="sig-name descname"><span class="pre">make_OrFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/planetsca/search_filters.html#make_OrFilter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.search_filters.make_OrFilter" title="Link to this definition">¶</a></dt>
+<dd><p>Make a filter by combining two or more filters with an OR operator</p>
+<section id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>filters: list[dict]</dt><dd><p>list of filters to combine with OR</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id5">
+<h3>Returns<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>filter: dict</dt><dd><p>combined filters for the Planet API</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.search_filters.make_cloud_cover_filter">
+<span class="sig-prename descclassname"><span class="pre">planetsca.search_filters.</span></span><span class="sig-name descname"><span class="pre">make_cloud_cover_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lte</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gte</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/planetsca/search_filters.html#make_cloud_cover_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.search_filters.make_cloud_cover_filter" title="Link to this definition">¶</a></dt>
+<dd><p>Make a cloud cover filter dictionary for the Planet API</p>
+<section id="id6">
+<h3>Parameters<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>lte: float</dt><dd><p>cloud cover less than or equal to</p>
+</dd>
+<dt>gte: float</dt><dd><p>cloud cover greater than or equal to value, defaults to 0</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id7">
+<h3>Returns<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>cloud_cover_filter: dict</dt><dd><p>dictionary cloud cover filter for the Planet API</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.search_filters.make_date_range_filter">
+<span class="sig-prename descclassname"><span class="pre">planetsca.search_filters.</span></span><span class="sig-name descname"><span class="pre">make_date_range_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/planetsca/search_filters.html#make_date_range_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.search_filters.make_date_range_filter" title="Link to this definition">¶</a></dt>
+<dd><p>Make a date range filter dictionary for the Planet API</p>
+<section id="id8">
+<h3>Parameters<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>start_date: str</dt><dd><p>start date (UTC) in the format ‘YYYY-mm-ddTHH:MM:SSZ’ (e.g. ‘2023-07-25T00:00:00Z’)</p>
+</dd>
+<dt>end_date: str</dt><dd><p>end date (UTC) in the format ‘YYYY-mm-ddTHH:MM:SSZ’ (e.g. ‘2023-07-25T00:00:00Z’)</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id9">
+<h3>Returns<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>date_range_filter: dict</dt><dd><p>dictionary date range filter for the Planet API</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.search_filters.make_domain_geometry_from_bounds">
+<span class="sig-prename descclassname"><span class="pre">planetsca.search_filters.</span></span><span class="sig-name descname"><span class="pre">make_domain_geometry_from_bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/search_filters.html#make_domain_geometry_from_bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.search_filters.make_domain_geometry_from_bounds" title="Link to this definition">¶</a></dt>
+<dd><p>Make a shapely geometry polygon from from longitude and latitude bounds (a rectangular area)</p>
+<section id="id10">
+<h3>Parameters<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>bounds: list[float]</dt><dd><p>longitude and latitude coordinates of the area, in the order [minLon, minLat, maxLon, maxLat]</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id11">
+<h3>Returns<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>geo_json_geometry: dict</dt><dd><p>a geojson-like dictionary</p>
+</dd>
+<dt>domain_geometry: shapely.geometry.polygon.Polygon</dt><dd><p>shaply geometry polygon defined by these bounds</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.search_filters.make_geometry_filter_from_bounds">
+<span class="sig-prename descclassname"><span class="pre">planetsca.search_filters.</span></span><span class="sig-name descname"><span class="pre">make_geometry_filter_from_bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/planetsca/search_filters.html#make_geometry_filter_from_bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.search_filters.make_geometry_filter_from_bounds" title="Link to this definition">¶</a></dt>
+<dd><p>Make a geometry filter dictionary for the Planet API from longitude and latitude bounds (a rectangular search area)</p>
+<section id="id12">
+<h3>Parameters<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>bounds: list[float]</dt><dd><p>longitude and latitude coordinates of the area, in the order [minLon, minLat, maxLon, maxLat]</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id13">
+<h3>Returns<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>geometry_filter: dict</dt><dd><p>dictionary geometry filter for the Planet API</p>
+</dd>
+<dt>geometry: shapely.geometry.polygon.Polygon</dt><dd><p>shaply geometry polygon defined by these bounds</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-planetsca.simplify_aoi">
+<span id="planetsca-simplify-aoi-module"></span><h2>planetsca.simplify_aoi module<a class="headerlink" href="#module-planetsca.simplify_aoi" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.simplify_aoi.check_hole">
+<span class="sig-prename descclassname"><span class="pre">planetsca.simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">check_hole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/planetsca/simplify_aoi.html#check_hole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.simplify_aoi.check_hole" title="Link to this definition">¶</a></dt>
+<dd><p>Checks if a polygon contains a hole.</p>
+<p>Parameters:
+- file_path: The path to the GeoJSON file.</p>
+<p>Returns:
+- bool: True if there is a hole in the polygon, false if there is not</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.simplify_aoi.check_overlap">
+<span class="sig-prename descclassname"><span class="pre">planetsca.simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">check_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/planetsca/simplify_aoi.html#check_overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.simplify_aoi.check_overlap" title="Link to this definition">¶</a></dt>
+<dd><p>Checks if two polygons are overlapping from a GeoJSON file</p>
+<p>Parameters:
+- file_path: The path to the GeoJSON file.</p>
+<blockquote>
+<div><p>Returns:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>bool: True if there is overlap and false if there is no overlap</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.simplify_aoi.clipping_check">
+<span class="sig-prename descclassname"><span class="pre">planetsca.simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">clipping_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AOI_Coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/planetsca/simplify_aoi.html#clipping_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.simplify_aoi.clipping_check" title="Link to this definition">¶</a></dt>
+<dd><p>Checks if a given polygon clips outside the contracted AOI coordinates</p>
+<p>Parameters:
+- file_path: The path to the GeoJSON file
+- AOI_Coordinates: List of coordinates representing the AOI bounds</p>
+<blockquote>
+<div><p>Returns:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>bool: True if it clips outside and false if it does not</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.simplify_aoi.fill_holes">
+<span class="sig-prename descclassname"><span class="pre">planetsca.simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">fill_holes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/simplify_aoi.html#fill_holes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.simplify_aoi.fill_holes" title="Link to this definition">¶</a></dt>
+<dd><p>Fills holes of GeoJSON by deleting interior ring coordinates and creating a new GeoJSON with new coordinates</p>
+<p>Parameters:
+- file_path: The path to the GeoJSON file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.simplify_aoi.fix_clipping">
+<span class="sig-prename descclassname"><span class="pre">planetsca.simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">fix_clipping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AOI_Coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/simplify_aoi.html#fix_clipping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.simplify_aoi.fix_clipping" title="Link to this definition">¶</a></dt>
+<dd><p>Deletes all parts of a Polygon that exceed the AOI coordinate bounds</p>
+<p>Parameters:
+- file_path: The path to the GeoJSON file
+- AOI_Coordinates: List of coordinates representing the AOI bounds</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.simplify_aoi.fix_overlap">
+<span class="sig-prename descclassname"><span class="pre">planetsca.simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">fix_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/simplify_aoi.html#fix_overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.simplify_aoi.fix_overlap" title="Link to this definition">¶</a></dt>
+<dd><p>Fixes the overlap of two polygons by deleting the overlapped area and merging the two polygons into one polygon</p>
+<p>Parameters:
+- file_path: The path to the GeoJSON file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.simplify_aoi.get_coordinates">
+<span class="sig-prename descclassname"><span class="pre">planetsca.simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">get_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/planetsca/simplify_aoi.html#get_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.simplify_aoi.get_coordinates" title="Link to this definition">¶</a></dt>
+<dd><p>Gets coordinates from a GeoJSON file - Helper Method</p>
+<p>Parameters:
+- file_path: The path to the GeoJSON file</p>
+<p>Returns:
+- list: List of vertices from GeoJSON polygon</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.simplify_aoi.reduce_vertex">
+<span class="sig-prename descclassname"><span class="pre">planetsca.simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">reduce_vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/simplify_aoi.html#reduce_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.simplify_aoi.reduce_vertex" title="Link to this definition">¶</a></dt>
+<dd><p>Reduces the number of vertices in a polygon</p>
+<p>Parameters:
+- file_path: The path to the GeoJSON file
+- ratio: Sets the concave_hull ratio</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.simplify_aoi.simplify">
+<span class="sig-prename descclassname"><span class="pre">planetsca.simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">simplify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AOI_Coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/planetsca/simplify_aoi.html#simplify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.simplify_aoi.simplify" title="Link to this definition">¶</a></dt>
+<dd><p>Runs all checks and fixes to adhere to Planet’s AOI Geometry Limits</p>
+<p>Parameters:
+- file_path: The path to the GeoJSON file
+- AOI_Coordinates: List of coordinates representing the AOI bounds</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="planetsca.simplify_aoi.vertex_count">
+<span class="sig-prename descclassname"><span class="pre">planetsca.simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">vertex_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/planetsca/simplify_aoi.html#vertex_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#planetsca.simplify_aoi.vertex_count" title="Link to this definition">¶</a></dt>
+<dd><p>Counts vertices from a GeoJSON file.</p>
+<p>Parameters:
+- file_path: The path to the GeoJSON file.</p>
+<p>Returns:
+- int: Number of vertices in geojson file</p>
+</dd></dl>
+
+</section>
+<section id="module-planetsca.version">
+<span id="planetsca-version-module"></span><h2>planetsca.version module<a class="headerlink" href="#module-planetsca.version" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-planetsca">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-planetsca" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+	    </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to PlanetSCA’s documentation!"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2024, DSHydro.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/jucacrispim/sphinx_pdj_theme">theme</a> provided by <a href="https://poraodojuca.dev">Porão do Juca</a>.
+
+</footer>
+	</div>
+	</div>
+	  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+    <script type="text/javascript" src="_static/documentation_options.js">
+
+    </script>
+    <script type="text/javascript" src="_static/doctools.js">
+
+    </script>
+    <script type="text/javascript" src="_static/sphinx_highlight.js">
+
+    </script>
+
+  
+
+   <script type="text/javascript"
+           src="_static/js/theme.js"></script>
+
+   <script type="text/javascript"
+           src="_static/js/pdj.js"></script>
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+  </body>
+</html>
