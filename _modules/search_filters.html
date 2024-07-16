@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
     <!-- Generated with Sphinx 7.4.4 and Furo 2024.05.06 -->
-        <title>Overview: module code - PlanetSCA 1.0.0 documentation</title>
+        <title>search_filters - PlanetSCA 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=387cc868" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -254,12 +254,187 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <h1>All modules for which code is available</h1>
-<ul><li><a href="data_preparation.html">data_preparation</a></li>
-<li><a href="prediction_evaluation.html">prediction_evaluation</a></li>
-<li><a href="search_filters.html">search_filters</a></li>
-<li><a href="simplify_aoi.html">simplify_aoi</a></li>
-</ul>
+          <h1>Source code for search_filters</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">shape</span>
+
+
+<div class="viewcode-block" id="make_domain_geometry_from_bounds">
+<a class="viewcode-back" href="../search_filters.html#search_filters.make_domain_geometry_from_bounds">[docs]</a>
+<span class="k">def</span> <span class="nf">make_domain_geometry_from_bounds</span><span class="p">(</span><span class="n">bounds</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make a shapely geometry polygon from from longitude and latitude bounds (a rectangular area)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        bounds: list[float]</span>
+<span class="sd">            longitude and latitude coordinates of the area, in the order [minLon, minLat, maxLon, maxLat]</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        geo_json_geometry: dict</span>
+<span class="sd">            a geojson-like dictionary</span>
+<span class="sd">        domain_geometry: shapely.geometry.polygon.Polygon</span>
+<span class="sd">            shaply geometry polygon defined by these bounds</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="p">[</span><span class="n">minLon</span><span class="p">,</span> <span class="n">minLat</span><span class="p">,</span> <span class="n">maxLon</span><span class="p">,</span> <span class="n">maxLat</span><span class="p">]</span> <span class="o">=</span> <span class="n">bounds</span>
+
+    <span class="c1"># create a geojson-like geometry dictionary</span>
+    <span class="n">geo_json_geometry</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="p">[</span><span class="n">minLon</span><span class="p">,</span> <span class="n">minLat</span><span class="p">],</span>  <span class="c1"># lower left corner</span>
+                <span class="p">[</span><span class="n">maxLon</span><span class="p">,</span> <span class="n">minLat</span><span class="p">],</span>  <span class="c1"># lower right corner</span>
+                <span class="p">[</span><span class="n">maxLon</span><span class="p">,</span> <span class="n">maxLat</span><span class="p">],</span>  <span class="c1"># upper right corner</span>
+                <span class="p">[</span><span class="n">minLon</span><span class="p">,</span> <span class="n">maxLat</span><span class="p">],</span>  <span class="c1"># upper left corner</span>
+                <span class="p">[</span><span class="n">minLon</span><span class="p">,</span> <span class="n">minLat</span><span class="p">],</span>  <span class="c1"># lower left corner again</span>
+            <span class="p">]</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="c1"># create a shapely geometry</span>
+    <span class="n">domain_geometry</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">geo_json_geometry</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">geo_json_geometry</span><span class="p">,</span> <span class="n">domain_geometry</span></div>
+
+
+
+<div class="viewcode-block" id="make_geometry_filter_from_bounds">
+<a class="viewcode-back" href="../search_filters.html#search_filters.make_geometry_filter_from_bounds">[docs]</a>
+<span class="k">def</span> <span class="nf">make_geometry_filter_from_bounds</span><span class="p">(</span><span class="n">bounds</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make a geometry filter dictionary for the Planet API from longitude and latitude bounds (a rectangular search area)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        bounds: list[float]</span>
+<span class="sd">            longitude and latitude coordinates of the area, in the order [minLon, minLat, maxLon, maxLat]</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        geometry_filter: dict</span>
+<span class="sd">            dictionary geometry filter for the Planet API</span>
+<span class="sd">        geometry: shapely.geometry.polygon.Polygon</span>
+<span class="sd">            shaply geometry polygon defined by these bounds</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># create a geojson-like geometry dictionary</span>
+    <span class="n">geo_json_geometry</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">make_domain_geometry_from_bounds</span><span class="p">(</span><span class="n">bounds</span><span class="p">)</span>
+
+    <span class="c1"># create the geometry filter for the Planet API</span>
+    <span class="n">geometry_filter</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;GeometryFilter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;field_name&quot;</span><span class="p">:</span> <span class="s2">&quot;geometry&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="n">geo_json_geometry</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">geometry_filter</span></div>
+
+
+
+<div class="viewcode-block" id="make_date_range_filter">
+<a class="viewcode-back" href="../search_filters.html#search_filters.make_date_range_filter">[docs]</a>
+<span class="k">def</span> <span class="nf">make_date_range_filter</span><span class="p">(</span><span class="n">start_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">end_date</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make a date range filter dictionary for the Planet API</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        start_date: str</span>
+<span class="sd">            start date (UTC) in the format &#39;YYYY-mm-ddTHH:MM:SSZ&#39; (e.g. &#39;2023-07-25T00:00:00Z&#39;)</span>
+<span class="sd">        end_date: str</span>
+<span class="sd">            end date (UTC) in the format &#39;YYYY-mm-ddTHH:MM:SSZ&#39; (e.g. &#39;2023-07-25T00:00:00Z&#39;)</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        date_range_filter: dict</span>
+<span class="sd">            dictionary date range filter for the Planet API</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># filter images acquired in a certain date range</span>
+    <span class="n">date_range_filter</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;DateRangeFilter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;field_name&quot;</span><span class="p">:</span> <span class="s2">&quot;acquired&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;gte&quot;</span><span class="p">:</span> <span class="n">start_date</span><span class="p">,</span> <span class="s2">&quot;lte&quot;</span><span class="p">:</span> <span class="n">end_date</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">date_range_filter</span></div>
+
+
+
+<div class="viewcode-block" id="make_cloud_cover_filter">
+<a class="viewcode-back" href="../search_filters.html#search_filters.make_cloud_cover_filter">[docs]</a>
+<span class="k">def</span> <span class="nf">make_cloud_cover_filter</span><span class="p">(</span><span class="n">lte</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">gte</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make a cloud cover filter dictionary for the Planet API</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        lte: float</span>
+<span class="sd">            cloud cover less than or equal to</span>
+<span class="sd">        gte: float</span>
+<span class="sd">            cloud cover greater than or equal to value, defaults to 0</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        cloud_cover_filter: dict</span>
+<span class="sd">            dictionary cloud cover filter for the Planet API</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">cloud_cover_filter</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;RangeFilter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;field_name&quot;</span><span class="p">:</span> <span class="s2">&quot;cloud_cover&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;gte&quot;</span><span class="p">:</span> <span class="n">gte</span><span class="p">,</span> <span class="s2">&quot;lte&quot;</span><span class="p">:</span> <span class="n">lte</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">cloud_cover_filter</span></div>
+
+
+
+<div class="viewcode-block" id="make_AndFilter">
+<a class="viewcode-back" href="../search_filters.html#search_filters.make_AndFilter">[docs]</a>
+<span class="k">def</span> <span class="nf">make_AndFilter</span><span class="p">(</span><span class="n">filters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make a filter by combining two or more filters with an AND operator</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        filters: list[dict]</span>
+<span class="sd">            list of filters to combine with AND</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        filter: dict</span>
+<span class="sd">            combined filters for the Planet API</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">filter</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;AndFilter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="n">filters</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">filter</span></div>
+
+
+
+<div class="viewcode-block" id="make_OrFilter">
+<a class="viewcode-back" href="../search_filters.html#search_filters.make_OrFilter">[docs]</a>
+<span class="k">def</span> <span class="nf">make_OrFilter</span><span class="p">(</span><span class="n">filters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make a filter by combining two or more filters with an OR operator</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        filters: list[dict]</span>
+<span class="sd">            list of filters to combine with OR</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        filter: dict</span>
+<span class="sd">            combined filters for the Planet API</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">filter</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;OrFilter&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="n">filters</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">filter</span></div>
+
+</pre></div>
         </article>
       </div>
       <footer>
