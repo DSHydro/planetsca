@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
     <!-- Generated with Sphinx 7.4.4 and Furo 2024.05.06 -->
-        <title>Overview: module code - PlanetSCA 1.0.0 documentation</title>
+        <title>model_training - PlanetSCA 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=387cc868" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -253,14 +253,125 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <h1>All modules for which code is available</h1>
-<ul><li><a href="data_gathering.html">data_gathering</a></li>
-<li><a href="data_preparation.html">data_preparation</a></li>
-<li><a href="model_training.html">model_training</a></li>
-<li><a href="prediction_evaluation.html">prediction_evaluation</a></li>
-<li><a href="search_filters.html">search_filters</a></li>
-<li><a href="simplify_aoi.html">simplify_aoi</a></li>
-</ul>
+          <h1>Source code for model_training</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">joblib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">huggingface_hub</span> <span class="kn">import</span> <span class="n">hf_hub_download</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RepeatedStratifiedKFold</span><span class="p">,</span> <span class="n">cross_val_score</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="train_model">
+<a class="viewcode-back" href="../model_training.html#model_training.train_model">[docs]</a>
+<span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span>
+    <span class="n">dir_model</span><span class="p">,</span>
+    <span class="n">dir_score</span><span class="p">,</span>
+    <span class="n">n_estimators</span><span class="p">,</span>
+    <span class="n">max_depth</span><span class="p">,</span>
+    <span class="n">max_features</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="p">,</span>
+    <span class="n">n_splits</span><span class="p">,</span>
+    <span class="n">n_repeats</span><span class="p">,</span>
+    <span class="n">df_train</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Trains and creates a model with custom parameters</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        dir_model: String path to save the model</span>
+<span class="sd">        dir_score: String path to save scores</span>
+<span class="sd">        n_estimators: Number of trees in the forest</span>
+<span class="sd">        max_depth: Maximum depth of the tree</span>
+<span class="sd">        max_features: Number of features to consider when looking for the best split</span>
+<span class="sd">        random_state: Seed to ensure reproducibility</span>
+<span class="sd">        n_splits: Number of folds in the cross-validation</span>
+<span class="sd">        n_repeats: Number of times cross-validator needs to be repeated</span>
+<span class="sd">        df_train: Dataframe containing training data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">starttime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;nir&quot;</span><span class="p">]]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span>
+
+    <span class="c1"># pre-process ndvi value to -1.0 to 1.0; fill nan to finite value</span>
+    <span class="c1"># X[X[&#39;ndvi&#39;]&lt; -1.0][&#39;ndvi&#39;] = -1.0</span>
+    <span class="c1"># X[X[&#39;ndvi&#39;]&gt; 1.0][&#39;ndvi&#39;] = 1.0</span>
+    <span class="c1"># X[np.isfinite(X[&#39;ndvi&#39;]) == False][&#39;ndvi&#39;] = np.nan</span>
+    <span class="c1"># define the model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span>
+        <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">,</span>
+        <span class="n">max_features</span><span class="o">=</span><span class="n">max_features</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># evaluate the model</span>
+    <span class="n">cv</span> <span class="o">=</span> <span class="n">RepeatedStratifiedKFold</span><span class="p">(</span>
+        <span class="n">n_splits</span><span class="o">=</span><span class="n">n_splits</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span>
+    <span class="p">)</span>
+    <span class="n">n_accuracy</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">error_score</span><span class="o">=</span><span class="s2">&quot;raise&quot;</span>
+    <span class="p">)</span>
+    <span class="n">n_f1</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">error_score</span><span class="o">=</span><span class="s2">&quot;raise&quot;</span>
+    <span class="p">)</span>
+    <span class="n">n_balanced_accuracy</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">X</span><span class="p">,</span>
+        <span class="n">y</span><span class="p">,</span>
+        <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;balanced_accuracy&quot;</span><span class="p">,</span>
+        <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">error_score</span><span class="o">=</span><span class="s2">&quot;raise&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># report performance</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">n_f1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Repeat times:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_f1</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;F1-score: </span><span class="si">%.5f</span><span class="s2"> (</span><span class="si">%.5f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_f1</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">n_f1</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;Balanced Accuracy: </span><span class="si">%.5f</span><span class="s2"> (</span><span class="si">%.5f</span><span class="s2">)&quot;</span>
+        <span class="o">%</span> <span class="p">(</span><span class="n">n_balanced_accuracy</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">n_balanced_accuracy</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: </span><span class="si">%.5f</span><span class="s2"> (</span><span class="si">%.5f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_accuracy</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">n_accuracy</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+
+    <span class="c1"># fit model with all observations</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="c1"># save model</span>
+    <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dir_model</span><span class="p">)</span>
+    <span class="c1"># save accuracy</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">scores</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_accuracy</span>
+    <span class="n">scores</span><span class="p">[</span><span class="s2">&quot;f1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_f1</span>
+    <span class="n">scores</span><span class="p">[</span><span class="s2">&quot;balanced_accuracy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_balanced_accuracy</span>
+    <span class="n">scores</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">dir_score</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total time used:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(),</span> <span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">process_time</span><span class="p">()</span> <span class="o">-</span> <span class="n">starttime</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="retrieve_model">
+<a class="viewcode-back" href="../model_training.html#model_training.retrieve_model">[docs]</a>
+<span class="k">def</span> <span class="nf">retrieve_model</span><span class="p">(</span><span class="n">out_direc</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Downloads pre-trained models from hugging faces</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        out_direc: String file path to output directory</span>
+<span class="sd">        file: String file name to download</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">hf_hub_download</span><span class="p">(</span>
+        <span class="n">repo_id</span><span class="o">=</span><span class="s2">&quot;geo-smart/planetsca_models&quot;</span><span class="p">,</span>
+        <span class="n">filename</span><span class="o">=</span><span class="n">file</span><span class="p">,</span>
+        <span class="n">local_dir</span><span class="o">=</span><span class="n">out_direc</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+</pre></div>
         </article>
       </div>
       <footer>

@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
-    <!-- Generated with Sphinx 7.4.5 and Furo 2024.05.06 -->
+    <!-- Generated with Sphinx 7.4.4 and Furo 2024.05.06 -->
         <title>data_preparation - PlanetSCA 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=387cc868" />
@@ -260,14 +260,35 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">rasterio</span>
-<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
 <span class="kn">from</span> <span class="nn">rasterio</span> <span class="kn">import</span> <span class="n">features</span>
 <span class="kn">from</span> <span class="nn">rasterio.enums</span> <span class="kn">import</span> <span class="n">MergeAlg</span>
 
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
 
+<div class="viewcode-block" id="vector_rasterize">
+<a class="viewcode-back" href="../data_preparation.html#data_preparation.vector_rasterize">[docs]</a>
 <span class="k">def</span> <span class="nf">vector_rasterize</span><span class="p">(</span><span class="n">dir_vector</span><span class="p">,</span> <span class="n">dir_raster</span><span class="p">,</span> <span class="n">dir_out</span><span class="p">,</span> <span class="n">flag_output</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper function for converting vector file to a raster file</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        dir_vector: str</span>
+<span class="sd">            File path to vector file</span>
+<span class="sd">        dir_raster: str</span>
+<span class="sd">            File path to Planet Image</span>
+<span class="sd">        dir_out: str</span>
+<span class="sd">            File path to output raster file</span>
+<span class="sd">        flag_output: bool</span>
+<span class="sd">            Flag for allowing overwriting of output file</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        rasterized: np.array</span>
+<span class="sd">            Rasterized version of the vector file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">vector</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">dir_vector</span><span class="p">)</span>
     <span class="c1"># Get list of geometries for all features in vector file</span>
     <span class="nb">list</span><span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
@@ -306,21 +327,27 @@
             <span class="n">height</span><span class="o">=</span><span class="n">raster</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
         <span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
             <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rasterized</span><span class="p">,</span> <span class="n">indexes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rasterized</span>
+    <span class="k">return</span> <span class="n">rasterized</span></div>
+
 
 
 <div class="viewcode-block" id="data_training_existing">
 <a class="viewcode-back" href="../data_preparation.html#data_preparation.data_training_existing">[docs]</a>
-<span class="k">def</span> <span class="nf">data_training_existing</span><span class="p">(</span><span class="n">dir_samples</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">data_training_existing</span><span class="p">(</span><span class="n">dir_samples</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Creates training data from a csv file</span>
 
-<span class="sd">    Parameters:</span>
-<span class="sd">    - dir_samples: File location of the csv file</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        dir_samples: str</span>
+<span class="sd">            File location of the csv file</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">    - DataFrame: DataFrame of training data</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        df_train: DataFrame</span>
+<span class="sd">            DataFrame of training data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dir_samples</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df_train</span></div>
 
@@ -328,20 +355,25 @@
 
 <div class="viewcode-block" id="data_training_new">
 <a class="viewcode-back" href="../data_preparation.html#data_preparation.data_training_new">[docs]</a>
-<span class="k">def</span> <span class="nf">data_training_new</span><span class="p">(</span>
-    <span class="n">dir_ROI</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dir_raster</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dir_ROIraster</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dir_samples_root</span><span class="p">:</span> <span class="nb">str</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">data_training_new</span><span class="p">(</span><span class="n">dir_ROI</span><span class="p">,</span> <span class="n">dir_raster</span><span class="p">,</span> <span class="n">dir_ROIraster</span><span class="p">,</span> <span class="n">dir_samples_root</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Creates training data from scratch</span>
 
-<span class="sd">    Parameters:</span>
-<span class="sd">    - dir_ROI: Directory path to regions of interest</span>
-<span class="sd">    - dir_raster: Directory to Planet image for training</span>
-<span class="sd">    - dir_ROIraster: Directory path to a ROI converted to shape mask</span>
-<span class="sd">    - dir_samples_root: Directory path to csv of training data extracted from images</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        dir_ROI: str</span>
+<span class="sd">            Directory path to regions of interest</span>
+<span class="sd">        dir_raster: str</span>
+<span class="sd">            Directory to Planet image for training</span>
+<span class="sd">        dir_ROIraster: str</span>
+<span class="sd">            Directory path to a ROI converted to shape mask</span>
+<span class="sd">        dir_samples_root: str</span>
+<span class="sd">            Directory path to csv of training data extracted from images</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">    - DataFrame: DataFrame of training data</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        df_train: DataFrame</span>
+<span class="sd">            DataFrame of training data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">flag_output</span> <span class="o">=</span> <span class="kc">True</span>

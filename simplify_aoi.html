@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Search Filters Module" href="search_filters.html" /><link rel="prev" title="Data Evaluation Module" href="prediction_evaluation.html" />
 
-    <!-- Generated with Sphinx 7.4.5 and Furo 2024.05.06 -->
+    <!-- Generated with Sphinx 7.4.4 and Furo 2024.05.06 -->
         <title>Simplify AOI Module - PlanetSCA 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=387cc868" />
@@ -191,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -254,14 +254,166 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="simplify-aoi-module">
-<h1>Simplify AOI Module<a class="headerlink" href="#simplify-aoi-module" title="Link to this heading">¶</a></h1>
+          <section id="module-simplify_aoi">
+<span id="simplify-aoi-module"></span><h1>Simplify AOI Module<a class="headerlink" href="#module-simplify_aoi" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="simplify_aoi.check_hole">
+<span class="sig-prename descclassname"><span class="pre">simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">check_hole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplify_aoi.html#check_hole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplify_aoi.check_hole" title="Link to this definition">¶</a></dt>
+<dd><p>Checks if a polygon contains a hole.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path location of geojson file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>boolean</strong> – True if there is a hole in the polygon, false if there is not</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplify_aoi.check_overlap">
+<span class="sig-prename descclassname"><span class="pre">simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">check_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/simplify_aoi.html#check_overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplify_aoi.check_overlap" title="Link to this definition">¶</a></dt>
+<dd><p>Checks if two polygons are overlapping from a GeoJSON file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path location of geojson file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>boolean</strong> – True if there is overlap and false if there is no overlap</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplify_aoi.clipping_check">
+<span class="sig-prename descclassname"><span class="pre">simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">clipping_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AOI_Coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/simplify_aoi.html#clipping_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplify_aoi.clipping_check" title="Link to this definition">¶</a></dt>
+<dd><p>Checks if a given polygon clips outside the contracted AOI coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Path location of geojson file</p></li>
+<li><p><strong>AOI_Coordinates</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of coordinates representing the AOI bounds</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>boolean</strong> – True if it clips outside and false if it does not</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplify_aoi.fill_holes">
+<span class="sig-prename descclassname"><span class="pre">simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">fill_holes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplify_aoi.html#fill_holes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplify_aoi.fill_holes" title="Link to this definition">¶</a></dt>
+<dd><p>Fills holes of GeoJSON by deleting interior ring coordinates and creating a new GeoJSON with new coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path location of geojson file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplify_aoi.fix_clipping">
+<span class="sig-prename descclassname"><span class="pre">simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">fix_clipping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AOI_Coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplify_aoi.html#fix_clipping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplify_aoi.fix_clipping" title="Link to this definition">¶</a></dt>
+<dd><p>Deletes all parts of a Polygon that exceed the AOI coordinate bounds</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Path location of geojson file</p></li>
+<li><p><strong>AOI_Coordinates</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of coordinates representing the AOI bounds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplify_aoi.fix_overlap">
+<span class="sig-prename descclassname"><span class="pre">simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">fix_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplify_aoi.html#fix_overlap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplify_aoi.fix_overlap" title="Link to this definition">¶</a></dt>
+<dd><p>Fixes the overlap of two polygons by deleting the overlapped area and merging the two polygons into one polygon</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path location of geojson file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplify_aoi.get_coordinates">
+<span class="sig-prename descclassname"><span class="pre">simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">get_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplify_aoi.html#get_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplify_aoi.get_coordinates" title="Link to this definition">¶</a></dt>
+<dd><p>Helper Method - Gets coordinates from a GeoJSON file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path location of geojson file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>coordinates_list</strong> – List of vertices from GeoJSON polygon</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplify_aoi.reduce_vertex">
+<span class="sig-prename descclassname"><span class="pre">simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">reduce_vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplify_aoi.html#reduce_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplify_aoi.reduce_vertex" title="Link to this definition">¶</a></dt>
+<dd><p>Reduces the number of vertices in a polygon</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Path location of geojson file</p></li>
+<li><p><strong>ratio</strong> (<em>float</em>) – Sets the concave_hull ratio</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplify_aoi.simplify">
+<span class="sig-prename descclassname"><span class="pre">simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">simplify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AOI_Coordinates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplify_aoi.html#simplify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplify_aoi.simplify" title="Link to this definition">¶</a></dt>
+<dd><p>Runs all checks and fixes to adhere to Planet’s AOI Geometry Limits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Path location of geojson file</p></li>
+<li><p><strong>AOI_Coordinates</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – List of coordinates representing the AOI bounds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simplify_aoi.vertex_count">
+<span class="sig-prename descclassname"><span class="pre">simplify_aoi.</span></span><span class="sig-name descname"><span class="pre">vertex_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/simplify_aoi.html#vertex_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simplify_aoi.vertex_count" title="Link to this definition">¶</a></dt>
+<dd><p>Counts vertices from a GeoJSON file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path location of geojson file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>vertex_num</strong> – Number of vertices in geojson file</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
         </article>
@@ -307,8 +459,36 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Simplify AOI Module</a><ul>
+<li><a class="reference internal" href="#simplify_aoi.check_hole"><code class="docutils literal notranslate"><span class="pre">check_hole()</span></code></a></li>
+<li><a class="reference internal" href="#simplify_aoi.check_overlap"><code class="docutils literal notranslate"><span class="pre">check_overlap()</span></code></a></li>
+<li><a class="reference internal" href="#simplify_aoi.clipping_check"><code class="docutils literal notranslate"><span class="pre">clipping_check()</span></code></a></li>
+<li><a class="reference internal" href="#simplify_aoi.fill_holes"><code class="docutils literal notranslate"><span class="pre">fill_holes()</span></code></a></li>
+<li><a class="reference internal" href="#simplify_aoi.fix_clipping"><code class="docutils literal notranslate"><span class="pre">fix_clipping()</span></code></a></li>
+<li><a class="reference internal" href="#simplify_aoi.fix_overlap"><code class="docutils literal notranslate"><span class="pre">fix_overlap()</span></code></a></li>
+<li><a class="reference internal" href="#simplify_aoi.get_coordinates"><code class="docutils literal notranslate"><span class="pre">get_coordinates()</span></code></a></li>
+<li><a class="reference internal" href="#simplify_aoi.reduce_vertex"><code class="docutils literal notranslate"><span class="pre">reduce_vertex()</span></code></a></li>
+<li><a class="reference internal" href="#simplify_aoi.simplify"><code class="docutils literal notranslate"><span class="pre">simplify()</span></code></a></li>
+<li><a class="reference internal" href="#simplify_aoi.vertex_count"><code class="docutils literal notranslate"><span class="pre">vertex_count()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

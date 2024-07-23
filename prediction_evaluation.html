@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Simplify AOI Module" href="simplify_aoi.html" /><link rel="prev" title="Model Training Module" href="model_training.html" />
 
-    <!-- Generated with Sphinx 7.4.5 and Furo 2024.05.06 -->
+    <!-- Generated with Sphinx 7.4.4 and Furo 2024.05.06 -->
         <title>Data Evaluation Module - PlanetSCA 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=387cc868" />
@@ -269,10 +269,73 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dir_raster</strong> (<em>string</em>) – the directory or the file of planet images</p></li>
-<li><p><strong>dir_out</strong> (<em>string</em>) – the directory where output snow cover images will be stored</p></li>
+<li><p><strong>dir_raster</strong> (<em>str</em>) – the directory or the file of planet images</p></li>
+<li><p><strong>dir_out</strong> (<em>str</em>) – the directory where output snow cover images will be stored</p></li>
 <li><p><strong>nodata_flag</strong> (<em>int</em><em>, </em><em>default=9</em>) – the value used to represent no data in the predicted snow cover image, default value is 9</p></li>
-<li><p><strong>model</strong> – the model used to predict snow cover</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – the directory where model used to predict snow cover is stored</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="prediction_evaluation.run_sca_prediction_band">
+<span class="sig-prename descclassname"><span class="pre">prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">run_sca_prediction_band</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_evaluation.html#run_sca_prediction_band"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#prediction_evaluation.run_sca_prediction_band" title="Link to this definition">¶</a></dt>
+<dd><p>CLARIFICIATION NEEDED</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir_raster</strong> (<em>str</em>) – the directory or the file of planet images</p></li>
+<li><p><strong>dir_out</strong> (<em>str</em>) – the directory where output snow cover images will be stored</p></li>
+<li><p><strong>nodata_flag</strong> (<em>int</em><em>, </em><em>default=9</em>) – the value used to represent no data in the predicted snow cover image, default value is 9</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – the directory where model used to predict snow cover is stored</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="prediction_evaluation.run_sca_prediction_fusion">
+<span class="sig-prename descclassname"><span class="pre">prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">run_sca_prediction_fusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_evaluation.html#run_sca_prediction_fusion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#prediction_evaluation.run_sca_prediction_fusion" title="Link to this definition">¶</a></dt>
+<dd><p>CLARIFICIATION NEEDED</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir_raster</strong> (<em>str</em>) – the directory or the file of planet images</p></li>
+<li><p><strong>dir_out</strong> (<em>str</em>) – the directory where output snow cover images will be stored</p></li>
+<li><p><strong>nodata_flag</strong> (<em>int</em><em>, </em><em>default=9</em>) – the value used to represent no data in the predicted snow cover image, default value is 9</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – the directory where model used to predict snow cover is stored</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="prediction_evaluation.run_sca_prediction_meadows">
+<span class="sig-prename descclassname"><span class="pre">prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">run_sca_prediction_meadows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_evaluation.html#run_sca_prediction_meadows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#prediction_evaluation.run_sca_prediction_meadows" title="Link to this definition">¶</a></dt>
+<dd><p>CLARIFICIATION NEEDED</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir_raster</strong> (<em>str</em>) – the directory or the file of planet images</p></li>
+<li><p><strong>dir_out</strong> (<em>str</em>) – the directory where output snow cover images will be stored</p></li>
+<li><p><strong>nodata_flag</strong> (<em>int</em><em>, </em><em>default=9</em>) – the value used to represent no data in the predicted snow cover image, default value is 9</p></li>
+<li><p><strong>model</strong> (<em>str</em>) – the directory where model used to predict snow cover is stored</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="prediction_evaluation.single_image_evaluation">
+<span class="sig-prename descclassname"><span class="pre">prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">single_image_evaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_evaluation.html#single_image_evaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#prediction_evaluation.single_image_evaluation" title="Link to this definition">¶</a></dt>
+<dd><p>Runs SCA prediction on a single image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir_raster</strong> (<em>str</em>) – the directory or the file of planet images</p></li>
+<li><p><strong>dir_model</strong> (<em>str</em>) – the directory where model used to predict snow cover is stored</p></li>
+<li><p><strong>dir_out</strong> (<em>str</em>) – the directory where output snow cover images will be stored</p></li>
 </ul>
 </dd>
 </dl>
@@ -337,6 +400,10 @@
             <ul>
 <li><a class="reference internal" href="#">Data Evaluation Module</a><ul>
 <li><a class="reference internal" href="#prediction_evaluation.run_sca_prediction"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction()</span></code></a></li>
+<li><a class="reference internal" href="#prediction_evaluation.run_sca_prediction_band"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction_band()</span></code></a></li>
+<li><a class="reference internal" href="#prediction_evaluation.run_sca_prediction_fusion"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction_fusion()</span></code></a></li>
+<li><a class="reference internal" href="#prediction_evaluation.run_sca_prediction_meadows"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction_meadows()</span></code></a></li>
+<li><a class="reference internal" href="#prediction_evaluation.single_image_evaluation"><code class="docutils literal notranslate"><span class="pre">single_image_evaluation()</span></code></a></li>
 </ul>
 </li>
 </ul>

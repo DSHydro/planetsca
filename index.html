@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="installation.html" />
 
-    <!-- Generated with Sphinx 7.4.5 and Furo 2024.05.06 -->
+    <!-- Generated with Sphinx 7.4.4 and Furo 2024.05.06 -->
         <title>PlanetSCA 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=387cc868" />
@@ -271,18 +271,52 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_gathering.html">Data Gathering Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_gathering.html">Data Gathering Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_gathering.html#data_gathering.build_payload"><code class="docutils literal notranslate"><span class="pre">build_payload()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_gathering.html#data_gathering.download_ready_orders"><code class="docutils literal notranslate"><span class="pre">download_ready_orders()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_gathering.html#data_gathering.download_results"><code class="docutils literal notranslate"><span class="pre">download_results()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_gathering.html#data_gathering.order_now"><code class="docutils literal notranslate"><span class="pre">order_now()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_gathering.html#data_gathering.prep_ID_geometry_lists"><code class="docutils literal notranslate"><span class="pre">prep_ID_geometry_lists()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_gathering.html#data_gathering.prepare_submit_orders"><code class="docutils literal notranslate"><span class="pre">prepare_submit_orders()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_gathering.html#data_gathering.read_geojson"><code class="docutils literal notranslate"><span class="pre">read_geojson()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_gathering.html#data_gathering.retrieve_dataset"><code class="docutils literal notranslate"><span class="pre">retrieve_dataset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_gathering.html#data_gathering.save_to_csv"><code class="docutils literal notranslate"><span class="pre">save_to_csv()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_gathering.html#data_gathering.search_API_request_object"><code class="docutils literal notranslate"><span class="pre">search_API_request_object()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_gathering.html#data_gathering.show_img"><code class="docutils literal notranslate"><span class="pre">show_img()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="data_preparation.html">Data Preparation Module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="data_preparation.html#data_preparation.data_training_existing"><code class="docutils literal notranslate"><span class="pre">data_training_existing()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_preparation.html#data_preparation.data_training_new"><code class="docutils literal notranslate"><span class="pre">data_training_new()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_preparation.html#data_preparation.vector_rasterize"><code class="docutils literal notranslate"><span class="pre">vector_rasterize()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="model_training.html">Model Training Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_training.html">Model Training Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model_training.html#model_training.retrieve_model"><code class="docutils literal notranslate"><span class="pre">retrieve_model()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_training.html#model_training.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="prediction_evaluation.html">Data Evaluation Module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="prediction_evaluation.html#prediction_evaluation.run_sca_prediction"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="prediction_evaluation.html#prediction_evaluation.run_sca_prediction_band"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction_band()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="prediction_evaluation.html#prediction_evaluation.run_sca_prediction_fusion"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction_fusion()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="prediction_evaluation.html#prediction_evaluation.run_sca_prediction_meadows"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction_meadows()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="prediction_evaluation.html#prediction_evaluation.single_image_evaluation"><code class="docutils literal notranslate"><span class="pre">single_image_evaluation()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="simplify_aoi.html">Simplify AOI Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simplify_aoi.html">Simplify AOI Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="simplify_aoi.html#simplify_aoi.check_hole"><code class="docutils literal notranslate"><span class="pre">check_hole()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simplify_aoi.html#simplify_aoi.check_overlap"><code class="docutils literal notranslate"><span class="pre">check_overlap()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simplify_aoi.html#simplify_aoi.clipping_check"><code class="docutils literal notranslate"><span class="pre">clipping_check()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simplify_aoi.html#simplify_aoi.fill_holes"><code class="docutils literal notranslate"><span class="pre">fill_holes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simplify_aoi.html#simplify_aoi.fix_clipping"><code class="docutils literal notranslate"><span class="pre">fix_clipping()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simplify_aoi.html#simplify_aoi.fix_overlap"><code class="docutils literal notranslate"><span class="pre">fix_overlap()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simplify_aoi.html#simplify_aoi.get_coordinates"><code class="docutils literal notranslate"><span class="pre">get_coordinates()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simplify_aoi.html#simplify_aoi.reduce_vertex"><code class="docutils literal notranslate"><span class="pre">reduce_vertex()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simplify_aoi.html#simplify_aoi.simplify"><code class="docutils literal notranslate"><span class="pre">simplify()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simplify_aoi.html#simplify_aoi.vertex_count"><code class="docutils literal notranslate"><span class="pre">vertex_count()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="search_filters.html">Search Filters Module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="search_filters.html#search_filters.make_AndFilter"><code class="docutils literal notranslate"><span class="pre">make_AndFilter()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="search_filters.html#search_filters.make_OrFilter"><code class="docutils literal notranslate"><span class="pre">make_OrFilter()</span></code></a></li>

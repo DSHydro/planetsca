@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Model Training Module" href="model_training.html" /><link rel="prev" title="Data Gathering Module" href="data_gathering.html" />
 
-    <!-- Generated with Sphinx 7.4.5 and Furo 2024.05.06 -->
+    <!-- Generated with Sphinx 7.4.4 and Furo 2024.05.06 -->
         <title>Data Preparation Module - PlanetSCA 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=387cc868" />
@@ -264,25 +264,63 @@
 <span id="data-preparation-module"></span><h1>Data Preparation Module<a class="headerlink" href="#module-data_preparation" title="Link to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="data_preparation.data_training_existing">
-<span class="sig-prename descclassname"><span class="pre">data_preparation.</span></span><span class="sig-name descname"><span class="pre">data_training_existing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/data_preparation.html#data_training_existing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_preparation.data_training_existing" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">data_preparation.</span></span><span class="sig-name descname"><span class="pre">data_training_existing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_preparation.html#data_training_existing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_preparation.data_training_existing" title="Link to this definition">¶</a></dt>
 <dd><p>Creates training data from a csv file</p>
-<p>Parameters:
-- dir_samples: File location of the csv file</p>
-<p>Returns:
-- DataFrame: DataFrame of training data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dir_samples</strong> (<em>str</em>) – File location of the csv file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>df_train</strong> – DataFrame of training data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="data_preparation.data_training_new">
-<span class="sig-prename descclassname"><span class="pre">data_preparation.</span></span><span class="sig-name descname"><span class="pre">data_training_new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_ROI</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_ROIraster</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_samples_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/data_preparation.html#data_training_new"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_preparation.data_training_new" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">data_preparation.</span></span><span class="sig-name descname"><span class="pre">data_training_new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_ROI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_ROIraster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_samples_root</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_preparation.html#data_training_new"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_preparation.data_training_new" title="Link to this definition">¶</a></dt>
 <dd><p>Creates training data from scratch</p>
-<p>Parameters:
-- dir_ROI: Directory path to regions of interest
-- dir_raster: Directory to Planet image for training
-- dir_ROIraster: Directory path to a ROI converted to shape mask
-- dir_samples_root: Directory path to csv of training data extracted from images</p>
-<p>Returns:
-- DataFrame: DataFrame of training data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir_ROI</strong> (<em>str</em>) – Directory path to regions of interest</p></li>
+<li><p><strong>dir_raster</strong> (<em>str</em>) – Directory to Planet image for training</p></li>
+<li><p><strong>dir_ROIraster</strong> (<em>str</em>) – Directory path to a ROI converted to shape mask</p></li>
+<li><p><strong>dir_samples_root</strong> (<em>str</em>) – Directory path to csv of training data extracted from images</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>df_train</strong> – DataFrame of training data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_preparation.vector_rasterize">
+<span class="sig-prename descclassname"><span class="pre">data_preparation.</span></span><span class="sig-name descname"><span class="pre">vector_rasterize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_vector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag_output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_preparation.html#vector_rasterize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_preparation.vector_rasterize" title="Link to this definition">¶</a></dt>
+<dd><p>Helper function for converting vector file to a raster file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir_vector</strong> (<em>str</em>) – File path to vector file</p></li>
+<li><p><strong>dir_raster</strong> (<em>str</em>) – File path to Planet Image</p></li>
+<li><p><strong>dir_out</strong> (<em>str</em>) – File path to output raster file</p></li>
+<li><p><strong>flag_output</strong> (<em>bool</em>) – Flag for allowing overwriting of output file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>rasterized</strong> – Rasterized version of the vector file</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -345,6 +383,7 @@
 <li><a class="reference internal" href="#">Data Preparation Module</a><ul>
 <li><a class="reference internal" href="#data_preparation.data_training_existing"><code class="docutils literal notranslate"><span class="pre">data_training_existing()</span></code></a></li>
 <li><a class="reference internal" href="#data_preparation.data_training_new"><code class="docutils literal notranslate"><span class="pre">data_training_new()</span></code></a></li>
+<li><a class="reference internal" href="#data_preparation.vector_rasterize"><code class="docutils literal notranslate"><span class="pre">vector_rasterize()</span></code></a></li>
 </ul>
 </li>
 </ul>

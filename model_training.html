@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Data Evaluation Module" href="prediction_evaluation.html" /><link rel="prev" title="Data Preparation Module" href="data_preparation.html" />
 
-    <!-- Generated with Sphinx 7.4.5 and Furo 2024.05.06 -->
+    <!-- Generated with Sphinx 7.4.4 and Furo 2024.05.06 -->
         <title>Model Training Module - PlanetSCA 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=387cc868" />
@@ -191,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -254,7 +254,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -262,6 +262,41 @@
         <article role="main" id="furo-main-content">
           <section id="module-model_training">
 <span id="model-training-module"></span><h1>Model Training Module<a class="headerlink" href="#module-model_training" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="model_training.retrieve_model">
+<span class="sig-prename descclassname"><span class="pre">model_training.</span></span><span class="sig-name descname"><span class="pre">retrieve_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_direc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model_training.html#retrieve_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model_training.retrieve_model" title="Link to this definition">¶</a></dt>
+<dd><p>Downloads pre-trained models from hugging faces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out_direc</strong> – String file path to output directory</p></li>
+<li><p><strong>file</strong> – String file name to download</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="model_training.train_model">
+<span class="sig-prename descclassname"><span class="pre">model_training.</span></span><span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_depth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repeats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_train</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/model_training.html#train_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#model_training.train_model" title="Link to this definition">¶</a></dt>
+<dd><p>Trains and creates a model with custom parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir_model</strong> – String path to save the model</p></li>
+<li><p><strong>dir_score</strong> – String path to save scores</p></li>
+<li><p><strong>n_estimators</strong> – Number of trees in the forest</p></li>
+<li><p><strong>max_depth</strong> – Maximum depth of the tree</p></li>
+<li><p><strong>max_features</strong> – Number of features to consider when looking for the best split</p></li>
+<li><p><strong>random_state</strong> – Seed to ensure reproducibility</p></li>
+<li><p><strong>n_splits</strong> – Number of folds in the cross-validation</p></li>
+<li><p><strong>n_repeats</strong> – Number of times cross-validator needs to be repeated</p></li>
+<li><p><strong>df_train</strong> – Dataframe containing training data</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
         </article>
@@ -307,8 +342,28 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Model Training Module</a><ul>
+<li><a class="reference internal" href="#model_training.retrieve_model"><code class="docutils literal notranslate"><span class="pre">retrieve_model()</span></code></a></li>
+<li><a class="reference internal" href="#model_training.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
