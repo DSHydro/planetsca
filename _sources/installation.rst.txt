@@ -8,7 +8,7 @@ Installation
     Ensure that Python is installed on your system. For data access, you must have an API key from Planet
 
 
-To Install the package use
+To install the package, use
 
 .. code-block:: bash
 

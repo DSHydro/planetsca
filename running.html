@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Data Gathering Module" href="data_gathering.html" /><link rel="prev" title="Installation" href="installation.html" />
 
     <!-- Generated with Sphinx 7.4.4 and Furo 2024.05.06 -->
         <title>Running the code - PlanetSCA 1.0.0 documentation</title>
@@ -212,8 +212,9 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Running the code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_gathering.html">Data Gathering Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_preparation.html">Data Preparation Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model_training.html">Model Training Module</a></li>
@@ -240,7 +241,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/Running.rst.txt" title="View this page">
+  <a class="muted-link" href="_sources/running.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -262,6 +263,31 @@
         <article role="main" id="furo-main-content">
           <section id="running-the-code">
 <h1>Running the code<a class="headerlink" href="#running-the-code" title="Link to this heading">¶</a></h1>
+<a class="reference internal image-reference" href="_images/simplify_and_searchfilters_flowchart.png"><img alt="Flow chart of simplify_AOI and Search_Filters modules" class="align-center" src="_images/simplify_and_searchfilters_flowchart.png" style="width: 800.0px; height: 250.0px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the search_filter module to create a search filter readable by Planet for a data request. Run simplify_AOI to ensure that the geojson will be accepted by Planet.</p>
+</div>
+<a class="reference internal image-reference" href="_images/data_gathering_flowchart.png"><img alt="Flow chart of data_gathering module" class="align-center" src="_images/data_gathering_flowchart.png" style="width: 800.0px; height: 250.0px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the data gathering module to create a request to Planet for data. The module will download the data and save it to a specified directory. There is also the option to download sample data.</p>
+</div>
+<a class="reference internal image-reference" href="_images/data_preparation_flowchart.png"><img alt="Flow chart of simplify_AOI and Search_Filters modules" class="align-center" src="_images/data_preparation_flowchart.png" style="width: 800.0px; height: 250.0px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the data preparation module to prepare the data for training. The module will create a training dataset and a validation dataset. There is also the option to prepare on already set up csv data.</p>
+</div>
+<a class="reference internal image-reference" href="_images/model_training_flowchart.png"><img alt="Flow chart of simplify_AOI and Search_Filters modules" class="align-center" src="_images/model_training_flowchart.png" style="width: 800.0px; height: 250.0px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the model training module to train a model on the training dataset. The module will save the model to a specified directory. There is also the option to retrieve a pre-made model.</p>
+</div>
+<a class="reference internal image-reference" href="_images/data_evaluation_flowchart.png"><img alt="Flow chart of simplify_AOI and Search_Filters modules" class="align-center" src="_images/data_evaluation_flowchart.png" style="width: 800.0px; height: 250.0px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the data evaluation module to evaluate the performance of a model. There are several different prediction functions available.</p>
+</div>
 </section>
 
         </article>
@@ -269,8 +295,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="data_gathering.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Data Gathering Module</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="installation.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Installation</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
