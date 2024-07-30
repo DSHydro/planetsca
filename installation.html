@@ -191,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -254,7 +254,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -263,6 +263,66 @@
           <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h1>
 <p><strong>This is a short guide on installing the PlanetSCA library.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ensure that Python is installed on your system. For data access, you must have an API key from Planet</p>
+</div>
+<p>To Install the package use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--extra-index-url<span class="w"> </span>https://test.pypi.org/simple<span class="w"> </span>planetsca
+</pre></div>
+</div>
+<section id="virtual-environment-setup">
+<h2>Virtual Environment Setup<a class="headerlink" href="#virtual-environment-setup" title="Link to this heading">¶</a></h2>
+<p>For easiest installation, use a virutal environment.</p>
+<ol class="arabic simple">
+<li><p>Open Command Palette (Ctrl + Shift + P)</p></li>
+<li><p>Select Venv</p></li>
+<li><p>Select Desired Interpreter Path (I use 3.12.2, minimum version is 3.8)</p></li>
+<li><p>Notification should show up on the bottom right corner titled “Creating
+environment (Show logs): Creating venv…</p></li>
+<li><p>The venv is set up and activated if you see “ <em>Python Version</em>
+(.’venv’:venv)”</p></li>
+<li><p><em>Note</em> After setting up a venv once, VScode will automatically start up the
+virtual environment alongside with VScode. There is no need to repeat these
+steps unless you do not see step 5.</p></li>
+</ol>
+<p>More information available here: <a class="reference external" href="https://code.visualstudio.com/docs/python/environments">Guide</a></p>
+</section>
+<section id="development">
+<h2>Development<a class="headerlink" href="#development" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Clone the repository</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/DSHydro/planetsca.git
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Go to the repository</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>planetsca
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Install the package</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Setup pre-commit</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+<section id="additional-information">
+<h2>Additional information<a class="headerlink" href="#additional-information" title="Link to this heading">¶</a></h2>
+<p>This package is originally modeled after Kehan’s repository: <a class="reference external" href="https://github.com/KehanGit/High_resolution_snow_cover_mapping">Github</a></p>
+<p>Check out the package on TestPyPi: <a class="reference external" href="https://test.pypi.org/project/planetsca/">PyPi</a></p>
+<p>Pre-trained Models hosted on Huggingfaces: <a class="reference external" href="https://huggingface.co/geo-smart/planetsca_models">Huggingface Models</a></p>
+<p>Sample Data hosted on Huggingfaces: <a class="reference external" href="https://huggingface.co/datasets/geo-smart/planetsca_datasets">Huggingface Data</a></p>
+<p>Find your API Key from Planet: <a class="reference external" href="https://developers.planet.com/quickstart/apis/#find-your-api-key">Planet</a></p>
+</section>
 </section>
 
         </article>
@@ -308,8 +368,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#virtual-environment-setup">Virtual Environment Setup</a></li>
+<li><a class="reference internal" href="#development">Development</a></li>
+<li><a class="reference internal" href="#additional-information">Additional information</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
