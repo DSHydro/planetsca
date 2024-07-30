@@ -341,7 +341,7 @@
 
 <div class="viewcode-block" id="run_sca_prediction_band">
 <a class="viewcode-back" href="../prediction_evaluation.html#prediction_evaluation.run_sca_prediction_band">[docs]</a>
-<span class="k">def</span> <span class="nf">run_sca_prediction_band</span><span class="p">(</span><span class="n">f_raster</span><span class="p">,</span> <span class="n">file_out</span><span class="p">,</span> <span class="n">nodata_flag</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">run_sca_prediction_band</span><span class="p">(</span><span class="n">dir_raster</span><span class="p">,</span> <span class="n">dir_out</span><span class="p">,</span> <span class="n">nodata_flag</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    CLARIFICIATION NEEDED</span>
 
@@ -358,13 +358,13 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">ndvi_out</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file_out</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_out</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;_NDVI.tif&quot;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">dir_out</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">dir_out</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;_NDVI.tif&quot;</span>
     <span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ndvi_out</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">ndvi_out</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start to predict:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f_raster</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start to predict:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">dir_raster</span><span class="p">))</span>
 
-        <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">f_raster</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ds</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">dir_raster</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ds</span><span class="p">:</span>
             <span class="n">arr</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># read all raster values</span>
 
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Image dimension:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(),</span> <span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1">#</span>
@@ -403,7 +403,7 @@
         <span class="c1"># save image to file_out</span>
 
         <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
-            <span class="n">file_out</span><span class="p">,</span>
+            <span class="n">dir_out</span><span class="p">,</span>
             <span class="s2">&quot;w&quot;</span><span class="p">,</span>
             <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GTiff&quot;</span><span class="p">,</span>
             <span class="n">transform</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">transform</span><span class="p">,</span>

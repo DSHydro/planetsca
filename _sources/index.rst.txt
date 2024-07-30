@@ -13,6 +13,7 @@ Welcome to PlanetSCA's documentation
    :caption: Contents:
 
    installation
+   running
    data_gathering
    data_preparation
    model_training

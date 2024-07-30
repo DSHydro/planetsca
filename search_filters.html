@@ -339,7 +339,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="search_filters.make_domain_geometry_from_bounds">
 <span class="sig-prename descclassname"><span class="pre">search_filters.</span></span><span class="sig-name descname"><span class="pre">make_domain_geometry_from_bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/search_filters.html#make_domain_geometry_from_bounds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#search_filters.make_domain_geometry_from_bounds" title="Link to this definition">¶</a></dt>
-<dd><p>Make a shapely geometry polygon from from longitude and latitude bounds (a rectangular area)</p>
+<dd><p>Helper - Make a shapely geometry polygon from from longitude and latitude bounds (a rectangular area)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>bounds</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – longitude and latitude coordinates of the area, in the order [minLon, minLat, maxLon, maxLat]</p>
@@ -368,6 +368,23 @@
 <li><p><strong>geometry</strong> (<em>shapely.geometry.polygon.Polygon</em>) – shaply geometry polygon defined by these bounds</p></li>
 </ul>
 </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="search_filters.make_geometry_filter_from_geojson">
+<span class="sig-prename descclassname"><span class="pre">search_filters.</span></span><span class="sig-name descname"><span class="pre">make_geometry_filter_from_geojson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_json_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/search_filters.html#make_geometry_filter_from_geojson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#search_filters.make_geometry_filter_from_geojson" title="Link to this definition">¶</a></dt>
+<dd><p>Make a geometry filter dictionary for the Planet API from a geojson file path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>geo_json_path</strong> (<em>str</em>) – Path to the geojson file to be turned into a filter</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>geometry_filter</strong> – dictionary geometry filter for the Planet API</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -428,6 +445,7 @@
 <li><a class="reference internal" href="#search_filters.make_date_range_filter"><code class="docutils literal notranslate"><span class="pre">make_date_range_filter()</span></code></a></li>
 <li><a class="reference internal" href="#search_filters.make_domain_geometry_from_bounds"><code class="docutils literal notranslate"><span class="pre">make_domain_geometry_from_bounds()</span></code></a></li>
 <li><a class="reference internal" href="#search_filters.make_geometry_filter_from_bounds"><code class="docutils literal notranslate"><span class="pre">make_geometry_filter_from_bounds()</span></code></a></li>
+<li><a class="reference internal" href="#search_filters.make_geometry_filter_from_geojson"><code class="docutils literal notranslate"><span class="pre">make_geometry_filter_from_geojson()</span></code></a></li>
 </ul>
 </li>
 </ul>

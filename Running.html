@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Simplify AOI Module" href="simplify_aoi.html" /><link rel="prev" title="Model Training Module" href="model_training.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <!-- Generated with Sphinx 7.4.4 and Furo 2024.05.06 -->
-        <title>Data Evaluation Module - PlanetSCA 1.0.0 documentation</title>
+        <title>Running the code - PlanetSCA 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=387cc868" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
@@ -191,7 +191,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -212,12 +212,12 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_gathering.html">Data Gathering Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_preparation.html">Data Preparation Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model_training.html">Model Training Module</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Data Evaluation Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prediction_evaluation.html">Data Evaluation Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="simplify_aoi.html">Simplify AOI Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="search_filters.html">Search Filters Module</a></li>
 </ul>
@@ -240,7 +240,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/prediction_evaluation.rst.txt" title="View this page">
+  <a class="muted-link" href="_sources/Running.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -254,93 +254,14 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="module-prediction_evaluation">
-<span id="data-evaluation-module"></span><h1>Data Evaluation Module<a class="headerlink" href="#module-prediction_evaluation" title="Link to this heading">¶</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="prediction_evaluation.run_sca_prediction">
-<span class="sig-prename descclassname"><span class="pre">prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">run_sca_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_evaluation.html#run_sca_prediction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#prediction_evaluation.run_sca_prediction" title="Link to this definition">¶</a></dt>
-<dd><p>This function predicts binary snow cover for planet satellite images using the pre-trained random forest model</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dir_raster</strong> (<em>str</em>) – the directory or the file of planet images</p></li>
-<li><p><strong>dir_out</strong> (<em>str</em>) – the directory where output snow cover images will be stored</p></li>
-<li><p><strong>nodata_flag</strong> (<em>int</em><em>, </em><em>default=9</em>) – the value used to represent no data in the predicted snow cover image, default value is 9</p></li>
-<li><p><strong>model</strong> (<em>str</em>) – the directory where model used to predict snow cover is stored</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="prediction_evaluation.run_sca_prediction_band">
-<span class="sig-prename descclassname"><span class="pre">prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">run_sca_prediction_band</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_evaluation.html#run_sca_prediction_band"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#prediction_evaluation.run_sca_prediction_band" title="Link to this definition">¶</a></dt>
-<dd><p>CLARIFICIATION NEEDED</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dir_raster</strong> (<em>str</em>) – the directory or the file of planet images</p></li>
-<li><p><strong>dir_out</strong> (<em>str</em>) – the directory where output snow cover images will be stored</p></li>
-<li><p><strong>nodata_flag</strong> (<em>int</em><em>, </em><em>default=9</em>) – the value used to represent no data in the predicted snow cover image, default value is 9</p></li>
-<li><p><strong>model</strong> (<em>str</em>) – the directory where model used to predict snow cover is stored</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="prediction_evaluation.run_sca_prediction_fusion">
-<span class="sig-prename descclassname"><span class="pre">prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">run_sca_prediction_fusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_evaluation.html#run_sca_prediction_fusion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#prediction_evaluation.run_sca_prediction_fusion" title="Link to this definition">¶</a></dt>
-<dd><p>CLARIFICIATION NEEDED</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dir_raster</strong> (<em>str</em>) – the directory or the file of planet images</p></li>
-<li><p><strong>dir_out</strong> (<em>str</em>) – the directory where output snow cover images will be stored</p></li>
-<li><p><strong>nodata_flag</strong> (<em>int</em><em>, </em><em>default=9</em>) – the value used to represent no data in the predicted snow cover image, default value is 9</p></li>
-<li><p><strong>model</strong> (<em>str</em>) – the directory where model used to predict snow cover is stored</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="prediction_evaluation.run_sca_prediction_meadows">
-<span class="sig-prename descclassname"><span class="pre">prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">run_sca_prediction_meadows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodata_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_evaluation.html#run_sca_prediction_meadows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#prediction_evaluation.run_sca_prediction_meadows" title="Link to this definition">¶</a></dt>
-<dd><p>CLARIFICIATION NEEDED</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dir_raster</strong> (<em>str</em>) – the directory or the file of planet images</p></li>
-<li><p><strong>dir_out</strong> (<em>str</em>) – the directory where output snow cover images will be stored</p></li>
-<li><p><strong>nodata_flag</strong> (<em>int</em><em>, </em><em>default=9</em>) – the value used to represent no data in the predicted snow cover image, default value is 9</p></li>
-<li><p><strong>model</strong> (<em>str</em>) – the directory where model used to predict snow cover is stored</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="prediction_evaluation.single_image_evaluation">
-<span class="sig-prename descclassname"><span class="pre">prediction_evaluation.</span></span><span class="sig-name descname"><span class="pre">single_image_evaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_raster</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/prediction_evaluation.html#single_image_evaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#prediction_evaluation.single_image_evaluation" title="Link to this definition">¶</a></dt>
-<dd><p>Runs SCA prediction on a single image</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dir_raster</strong> (<em>str</em>) – the directory or the file of planet images</p></li>
-<li><p><strong>dir_model</strong> (<em>str</em>) – the directory where model used to predict snow cover is stored</p></li>
-<li><p><strong>dir_out</strong> (<em>str</em>) – the directory where output snow cover images will be stored</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
+          <section id="running-the-code">
+<h1>Running the code<a class="headerlink" href="#running-the-code" title="Link to this heading">¶</a></h1>
 </section>
 
         </article>
@@ -348,26 +269,8 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="simplify_aoi.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Simplify AOI Module</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="model_training.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Model Training Module</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -386,31 +289,8 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Data Evaluation Module</a><ul>
-<li><a class="reference internal" href="#prediction_evaluation.run_sca_prediction"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction()</span></code></a></li>
-<li><a class="reference internal" href="#prediction_evaluation.run_sca_prediction_band"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction_band()</span></code></a></li>
-<li><a class="reference internal" href="#prediction_evaluation.run_sca_prediction_fusion"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction_fusion()</span></code></a></li>
-<li><a class="reference internal" href="#prediction_evaluation.run_sca_prediction_meadows"><code class="docutils literal notranslate"><span class="pre">run_sca_prediction_meadows()</span></code></a></li>
-<li><a class="reference internal" href="#prediction_evaluation.single_image_evaluation"><code class="docutils literal notranslate"><span class="pre">single_image_evaluation()</span></code></a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
