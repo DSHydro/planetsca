@@ -1,6 +1,6 @@
-from shapely.geometry import shape
-
 import json
+
+from shapely.geometry import shape
 
 
 def make_domain_geometry_from_bounds(bounds: list[float]):
@@ -90,7 +90,7 @@ def make_geometry_filter_from_geojson(geo_json_path: str) -> dict:
     coords = []
 
     coords.extend(
-        [coord for polygon in geojson_data['coordinates'] for coord in polygon]
+        [coord for polygon in geojson_data["coordinates"] for coord in polygon]
     )
 
     geo_json_geometry = {
