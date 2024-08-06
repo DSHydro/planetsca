@@ -18,7 +18,7 @@ To install the package, use
 Virtual Environment Setup
 -------------------------
 
-For easiest installation, use a virutal environment.
+For easiest installation, use a virtual environment.
 
 1. Open Command Palette (Ctrl + Shift + P)
 2. Select Venv

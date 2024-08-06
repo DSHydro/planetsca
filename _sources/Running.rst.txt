@@ -32,7 +32,7 @@ Running the code
 
 .. note::
 
-    Use the data preparation module to prepare the data for training. The module will create a training dataset and a validation dataset. There is also the option to prepare on already set up csv data. 
+    Use the data preparation module to prepare the data for training. The module will create a training dataset and a validation dataset. There is also the option to prepare on already set up csv data.
 
 .. image:: doc_images/model_training_flowchart.png
     :alt: Flow chart of simplify_AOI and Search_Filters modules
@@ -54,4 +54,4 @@ Running the code
 
 .. note::
 
-    Use the data evaluation module to evaluate the performance of a model. There are several different prediction functions available. 
+    Use the data evaluation module to evaluate the performance of a model. There are several different prediction functions available.

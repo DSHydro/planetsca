@@ -2,12 +2,14 @@
 <html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
-    <!-- Generated with Sphinx 7.4.4 and Furo 2024.05.06 --><title>Python Module Index - PlanetSCA 1.0.0 documentation</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=387cc868" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.07.18 -->
+        <title>Running the code - PlanetSCA 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=613ab9ff" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
     
     
 
@@ -86,19 +88,6 @@
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
     </svg>
   </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
-    </svg>
-  </symbol>
   <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
     <title>Auto light/dark, in light mode</title>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -139,7 +128,7 @@
       <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
       <path d="M13.5 6.5l4 4" />
       <path d="M20 21l2 -2l-2 -2" />
-      <path d="M17 17l-2 2l2 2" /
+      <path d="M17 17l-2 2l2 2" />
     </svg>
   </symbol>
   <symbol id="svg-eye" viewBox="0 0 24 24">
@@ -212,7 +201,6 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="running.html">Running the code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_gathering.html">Data Gathering Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_preparation.html">Data Preparation Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model_training.html">Model Training Module</a></li>
@@ -238,7 +226,13 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/Running.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
@@ -253,73 +247,39 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          
-<section class="domainindex-section">
-  <h1>Python Module Index</h1>
-  <div class="domainindex-jumpbox"><a href="#cap-d"><strong>d</strong></a> | <a href="#cap-m"><strong>m</strong></a> | <a href="#cap-p"><strong>p</strong></a> | <a href="#cap-s"><strong>s</strong></a></div>
+          <section id="running-the-code">
+<h1>Running the code<a class="headerlink" href="#running-the-code" title="Link to this heading">¶</a></h1>
+<a class="reference internal image-reference" href="_images/simplify_and_searchfilters_flowchart.png"><img alt="Flow chart of simplify_AOI and Search_Filters modules" class="align-center" src="_images/simplify_and_searchfilters_flowchart.png" style="width: 800.0px; height: 250.0px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the search_filter module to create a search filter readable by Planet for a data request. Run simplify_AOI to ensure that the geojson will be accepted by Planet.</p>
+</div>
+<a class="reference internal image-reference" href="_images/data_gathering_flowchart.png"><img alt="Flow chart of data_gathering module" class="align-center" src="_images/data_gathering_flowchart.png" style="width: 800.0px; height: 250.0px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the data gathering module to create a request to Planet for data. The module will download the data and save it to a specified directory. There is also the option to download sample data.</p>
+</div>
+<a class="reference internal image-reference" href="_images/data_preparation_flowchart.png"><img alt="Flow chart of simplify_AOI and Search_Filters modules" class="align-center" src="_images/data_preparation_flowchart.png" style="width: 800.0px; height: 250.0px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the data preparation module to prepare the data for training. The module will create a training dataset and a validation dataset. There is also the option to prepare on already set up csv data.</p>
+</div>
+<a class="reference internal image-reference" href="_images/model_training_flowchart.png"><img alt="Flow chart of simplify_AOI and Search_Filters modules" class="align-center" src="_images/model_training_flowchart.png" style="width: 800.0px; height: 250.0px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the model training module to train a model on the training dataset. The module will save the model to a specified directory. There is also the option to retrieve a pre-made model.</p>
+</div>
+<a class="reference internal image-reference" href="_images/data_evaluation_flowchart.png"><img alt="Flow chart of simplify_AOI and Search_Filters modules" class="align-center" src="_images/data_evaluation_flowchart.png" style="width: 800.0px; height: 250.0px;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the data evaluation module to evaluate the performance of a model. There are several different prediction functions available.</p>
+</div>
 </section>
-<table class="domainindex-table">
-  <tr class="pcap">
-    <td></td><td>&#160;</td><td></td>
-  </tr>
-  <tr class="cap" id="cap-d">
-    <td></td><td><strong>d</strong></td><td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-        <a href="data_gathering.html#module-data_gathering"><code class="xref">data_gathering</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-        <a href="data_preparation.html#module-data_preparation"><code class="xref">data_preparation</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="pcap">
-    <td></td><td>&#160;</td><td></td>
-  </tr>
-  <tr class="cap" id="cap-m">
-    <td></td><td><strong>m</strong></td><td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-        <a href="model_training.html#module-model_training"><code class="xref">model_training</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="pcap">
-    <td></td><td>&#160;</td><td></td>
-  </tr>
-  <tr class="cap" id="cap-p">
-    <td></td><td><strong>p</strong></td><td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-        <a href="prediction_evaluation.html#module-prediction_evaluation"><code class="xref">prediction_evaluation</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr class="pcap">
-    <td></td><td>&#160;</td><td></td>
-  </tr>
-  <tr class="cap" id="cap-s">
-    <td></td><td><strong>s</strong></td><td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-        <a href="search_filters.html#module-search_filters"><code class="xref">search_filters</code></a></td><td>
-    <em></em></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-        <a href="simplify_aoi.html#module-simplify_aoi"><code class="xref">simplify_aoi</code></a></td><td>
-    <em></em></td>
-  </tr>
-</table>
 
         </article>
       </div>
@@ -355,7 +315,6 @@
 </div><script src="_static/documentation_options.js?v=8d563738"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=4e2eecee"></script>
-    
-    <script>DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true</script></body>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
 </html>
