@@ -142,13 +142,13 @@ dir_model = ""
 dir_score = ""
 
 #Model Parameters
-n_estimators = 
-max_dpeth = 
+n_estimators =
+max_dpeth =
 max_features =
 random_state =
 n_splits =
 n_repeats =
-df_train = 
+df_train =
 ```
 
 4b. Model Training Path 1
