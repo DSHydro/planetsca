@@ -21,13 +21,17 @@ dependencies = [
     "requests",
     "shapely",
     "geopandas",
-    "sphinx",
-    "furo"
+    "fiona",
+    "skl2onnx",
+    "onnxruntime",
 
 ]
 requires-python = ">=3.8"
 authors = [
-    { name = "Ian Chiu", email = "ianchiu333@gmail.com" }
+    {name = "Ian Chiu", email = "ianchiu333@gmail.com"},
+    {name = "Nicoleta Cristea", email = "cristn@uw.edu"},
+    {name = "Steven Pestana", email = "spestana@uw.edu"},
+    {name = "Kehan Yang", email = "kyang33@uw.edu"},
 ]
 license = {file = "LICENSE"}
 
@@ -36,7 +40,16 @@ license = {file = "LICENSE"}
 dev = [
     "pytest>=6.2.5",
     "pre-commit>=2.17.0",
-    "nox"
+    "nox",
+]
+doc = [
+    "pandoc",
+    "sphinx",
+    "furo",
+    "myst-parser",
+    "nbsphinx",
+    "ipykernel",
+    "ghp-import",
 ]
 
 [project.urls]
