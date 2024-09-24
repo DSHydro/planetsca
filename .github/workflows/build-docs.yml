@@ -22,12 +22,12 @@ jobs:
           python-version: "3.x"
 
       - name: Install Pandoc
-        run: sudo apt-get install pandoc
+        run: sudo apt-zget install pandoc
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install .[doc]
+          pip install --extra-index-url https://test.pypi.org/simple planetsca[doc]
 
       - name: Build Sphinx documentation
         run: |
