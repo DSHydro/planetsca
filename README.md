@@ -13,7 +13,7 @@ demonstrate the library's functions.
 The search and download functions require you to have an account with Planet and
 an [API key](https://developers.planet.com/quickstart/apis/#find-your-api-key).
 
-![planetsca flowchart](docs/doc_images/planetsca_flowchart.png)
+![planetsca_flowchart](https://github.com/user-attachments/assets/be1569be-bf4a-4522-aa38-443411e8c026)
 
 ## Documentation
 
