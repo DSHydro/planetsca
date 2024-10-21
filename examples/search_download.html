@@ -1,0 +1,1065 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Creating Training Data" href="../training_data.html" /><link rel="prev" title="Quick Start" href="quick_start.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>Search and Download - PlanetSCA 0.1.dev296 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">PlanetSCA 0.1.dev296 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">PlanetSCA 0.1.dev296 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Quick Start</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Search and Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_data.html">Creating Training Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="train_predict.html">Train and Predict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert_model.html">Convert sklearn model to ONNX</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../search_module.html">planetsca.search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../download.html">planetsca.download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../train.html">planetsca.train</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../predict.html">planetsca.predict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simplify_aoi.html">planetsca.simplify_aoi</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/examples/search_download.ipynb.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="Search-and-Download">
+<h1>Search and Download<a class="headerlink" href="#Search-and-Download" title="Link to this heading">¶</a></h1>
+<p>This example notebook walks through the steps for searching and downloading PlanetScope imagery using the planetsca library.</p>
+<p>You will need a user account with Planet, and your own <a class="reference external" href="https://developers.planet.com/quickstart/apis/#find-your-api-key">API key</a> to use these functions.</p>
+<p>Overarching flowchart for the search and search_AOI modules <img alt="planetsca search and planetsca search_AOI" src="https://github.com/user-attachments/assets/d6fa4363-d791-45de-b887-b689c6bdd754" /></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">planetsca</span> <span class="k">as</span> <span class="nn">ps</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/jovyan/envs/planetenv/lib/python3.9/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;YOUR_API_KEY_HERE&quot;</span>  <span class="c1"># provide you Planet API key here</span>
+</pre></div>
+</div>
+</div>
+<section id="Searching-for-Planet-imagery">
+<h2>Searching for Planet imagery<a class="headerlink" href="#Searching-for-Planet-imagery" title="Link to this heading">¶</a></h2>
+<p>Set up a filter to search a specific time range and region, and to avoid cloudy images:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter images acquired in a certain date range</span>
+<span class="n">date_range_filter</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">make_date_range_filter</span><span class="p">(</span>
+    <span class="s2">&quot;2024-01-15T00:00:00.000Z&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-01-31T00:00:00.000Z&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>There are two options for specifying a region to search: creating a “geometry filter” from lat and lon bounding coordinates, or creating a “geometry filter” from a geojson file.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example for defining an area of interest from bounds</span>
+<span class="n">minLon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">105.88</span>
+<span class="n">minLat</span> <span class="o">=</span> <span class="mf">40.51</span>
+<span class="n">maxLon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">105.87</span>
+<span class="n">maxLat</span> <span class="o">=</span> <span class="mf">40.52</span>
+
+<span class="c1"># make a geometry filter with these bounding coordinates</span>
+<span class="n">geometry_filter</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">make_geometry_filter_from_bounds</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">minLon</span><span class="p">,</span> <span class="n">minLat</span><span class="p">,</span> <span class="n">maxLon</span><span class="p">,</span> <span class="n">maxLat</span><span class="p">]</span>
+<span class="p">)</span>
+
+
+<span class="c1"># Alternatively, define area of interest from a geojson file</span>
+<span class="c1"># geometry_filter = ps.search.make_geometry_filter_from_geojson(&#39;my_study_area.geojson&#39;)</span>
+</pre></div>
+</div>
+</div>
+<p>Add a cloud cover percentage filter</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cloud_filter</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">make_cloud_cover_filter</span><span class="p">(</span>
+    <span class="mf">0.05</span>
+<span class="p">)</span>  <span class="c1"># filter any images which are more than 5% clouds</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, create a filter that combines our geometry, date, and cloud filters</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">combine_filters</span><span class="p">([</span><span class="n">date_range_filter</span><span class="p">,</span> <span class="n">geometry_filter</span><span class="p">,</span> <span class="n">cloud_filter</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>Submit our search to the Planet API. This returns a geopandas.GeoDataFrame with information about the images that match our filter criteria</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">search_results_gdf</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Search returned 8 items.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">search_results_gdf</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geometry</th>
+      <th>acquired</th>
+      <th>anomalous_pixels</th>
+      <th>clear_confidence_percent</th>
+      <th>clear_percent</th>
+      <th>cloud_cover</th>
+      <th>cloud_percent</th>
+      <th>ground_control</th>
+      <th>gsd</th>
+      <th>heavy_haze_percent</th>
+      <th>...</th>
+      <th>strip_id</th>
+      <th>sun_azimuth</th>
+      <th>sun_elevation</th>
+      <th>updated</th>
+      <th>view_angle</th>
+      <th>visible_confidence_percent</th>
+      <th>visible_percent</th>
+      <th>intersection_area</th>
+      <th>overlap_percentage</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>POLYGON ((-106.19821 40.69052, -106.24418 40.5...</td>
+      <td>2024-01-30T17:48:24.24349Z</td>
+      <td>0</td>
+      <td>66</td>
+      <td>14</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>True</td>
+      <td>3.5</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7075747</td>
+      <td>156.3</td>
+      <td>28.4</td>
+      <td>2024-02-01T03:58:16Z</td>
+      <td>5.0</td>
+      <td>65</td>
+      <td>100</td>
+      <td>0.000051</td>
+      <td>50.644997</td>
+      <td>20240130_174824_24_2484</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>POLYGON ((-105.94697 40.5751, -105.99321 40.41...</td>
+      <td>2024-01-27T17:49:51.954811Z</td>
+      <td>0</td>
+      <td>65</td>
+      <td>29</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>True</td>
+      <td>3.5</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7068597</td>
+      <td>157.0</td>
+      <td>27.9</td>
+      <td>2024-01-28T06:11:48Z</td>
+      <td>2.0</td>
+      <td>61</td>
+      <td>99</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240127_174951_95_247d</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>POLYGON ((-105.88645 40.55067, -105.93283 40.3...</td>
+      <td>2024-01-27T17:42:51.03811Z</td>
+      <td>0</td>
+      <td>64</td>
+      <td>29</td>
+      <td>0.03</td>
+      <td>3</td>
+      <td>True</td>
+      <td>3.6</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7068561</td>
+      <td>155.6</td>
+      <td>27.5</td>
+      <td>2024-01-28T06:09:20Z</td>
+      <td>5.0</td>
+      <td>60</td>
+      <td>97</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240127_174251_03_227a</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>POLYGON ((-105.85123 40.6801, -105.89698 40.51...</td>
+      <td>2024-01-27T17:42:48.998661Z</td>
+      <td>0</td>
+      <td>63</td>
+      <td>23</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>True</td>
+      <td>3.6</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7068561</td>
+      <td>155.7</td>
+      <td>27.4</td>
+      <td>2024-01-28T06:09:20Z</td>
+      <td>5.0</td>
+      <td>59</td>
+      <td>100</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240127_174248_99_227a</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>POLYGON ((-106.1921 40.68607, -106.24563 40.50...</td>
+      <td>2024-01-23T17:07:24.191323Z</td>
+      <td>0</td>
+      <td>56</td>
+      <td>17</td>
+      <td>0.03</td>
+      <td>3</td>
+      <td>True</td>
+      <td>3.9</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7060077</td>
+      <td>146.6</td>
+      <td>22.8</td>
+      <td>2024-01-24T06:13:56Z</td>
+      <td>4.0</td>
+      <td>58</td>
+      <td>97</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240123_170724_19_24bc</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>POLYGON ((-106.03646 40.70049, -106.09005 40.5...</td>
+      <td>2024-01-16T17:07:00.243012Z</td>
+      <td>0</td>
+      <td>40</td>
+      <td>1</td>
+      <td>0.03</td>
+      <td>3</td>
+      <td>True</td>
+      <td>3.9</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7045035</td>
+      <td>147.8</td>
+      <td>21.6</td>
+      <td>2024-01-17T09:58:34Z</td>
+      <td>5.0</td>
+      <td>56</td>
+      <td>97</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240116_170700_24_24b0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>POLYGON ((-105.84943 40.62474, -105.89752 40.4...</td>
+      <td>2024-01-16T17:49:47.733879Z</td>
+      <td>0</td>
+      <td>47</td>
+      <td>12</td>
+      <td>0.04</td>
+      <td>4</td>
+      <td>True</td>
+      <td>3.5</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7045173</td>
+      <td>158.1</td>
+      <td>25.5</td>
+      <td>2024-01-17T05:31:17Z</td>
+      <td>5.0</td>
+      <td>54</td>
+      <td>96</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240116_174947_73_2483</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>POLYGON ((-105.8839 40.65978, -105.93455 40.47...</td>
+      <td>2024-01-16T17:01:56.418635Z</td>
+      <td>0</td>
+      <td>50</td>
+      <td>6</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>True</td>
+      <td>3.9</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7045016</td>
+      <td>147.5</td>
+      <td>21.7</td>
+      <td>2024-01-17T05:37:04Z</td>
+      <td>3.5</td>
+      <td>53</td>
+      <td>100</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240116_170156_41_24c1</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 32 columns</p>
+</div></div>
+</div>
+</section>
+<section id="Download-Planet-imagery">
+<h2>Download Planet imagery<a class="headerlink" href="#Download-Planet-imagery" title="Link to this heading">¶</a></h2>
+<p>Now that we’ve found some images we’re interested in, we can send a request to order and download the images.</p>
+<p>Overarching flowchart for the download module <img alt="planetsca download" src="https://github.com/user-attachments/assets/7281347d-0837-46a0-84b4-0d14e924c634" /></p>
+<p>But first, perhaps we’d like to exclude images that overlap our region of interest by less than 50%. We can do that with the following:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">search_results_gdf</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+    <span class="n">search_results_gdf</span><span class="p">[</span><span class="n">search_results_gdf</span><span class="o">.</span><span class="n">overlap_percentage</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">search_results_gdf</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geometry</th>
+      <th>acquired</th>
+      <th>anomalous_pixels</th>
+      <th>clear_confidence_percent</th>
+      <th>clear_percent</th>
+      <th>cloud_cover</th>
+      <th>cloud_percent</th>
+      <th>ground_control</th>
+      <th>gsd</th>
+      <th>heavy_haze_percent</th>
+      <th>...</th>
+      <th>strip_id</th>
+      <th>sun_azimuth</th>
+      <th>sun_elevation</th>
+      <th>updated</th>
+      <th>view_angle</th>
+      <th>visible_confidence_percent</th>
+      <th>visible_percent</th>
+      <th>intersection_area</th>
+      <th>overlap_percentage</th>
+      <th>id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>POLYGON ((-106.19821 40.69052, -106.24418 40.5...</td>
+      <td>2024-01-30T17:48:24.24349Z</td>
+      <td>0</td>
+      <td>66</td>
+      <td>14</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>True</td>
+      <td>3.5</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7075747</td>
+      <td>156.3</td>
+      <td>28.4</td>
+      <td>2024-02-01T03:58:16Z</td>
+      <td>5.0</td>
+      <td>65</td>
+      <td>100</td>
+      <td>0.000051</td>
+      <td>50.644997</td>
+      <td>20240130_174824_24_2484</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>POLYGON ((-105.94697 40.5751, -105.99321 40.41...</td>
+      <td>2024-01-27T17:49:51.954811Z</td>
+      <td>0</td>
+      <td>65</td>
+      <td>29</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>True</td>
+      <td>3.5</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7068597</td>
+      <td>157.0</td>
+      <td>27.9</td>
+      <td>2024-01-28T06:11:48Z</td>
+      <td>2.0</td>
+      <td>61</td>
+      <td>99</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240127_174951_95_247d</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>POLYGON ((-105.88645 40.55067, -105.93283 40.3...</td>
+      <td>2024-01-27T17:42:51.03811Z</td>
+      <td>0</td>
+      <td>64</td>
+      <td>29</td>
+      <td>0.03</td>
+      <td>3</td>
+      <td>True</td>
+      <td>3.6</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7068561</td>
+      <td>155.6</td>
+      <td>27.5</td>
+      <td>2024-01-28T06:09:20Z</td>
+      <td>5.0</td>
+      <td>60</td>
+      <td>97</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240127_174251_03_227a</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>POLYGON ((-105.85123 40.6801, -105.89698 40.51...</td>
+      <td>2024-01-27T17:42:48.998661Z</td>
+      <td>0</td>
+      <td>63</td>
+      <td>23</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>True</td>
+      <td>3.6</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7068561</td>
+      <td>155.7</td>
+      <td>27.4</td>
+      <td>2024-01-28T06:09:20Z</td>
+      <td>5.0</td>
+      <td>59</td>
+      <td>100</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240127_174248_99_227a</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>POLYGON ((-106.1921 40.68607, -106.24563 40.50...</td>
+      <td>2024-01-23T17:07:24.191323Z</td>
+      <td>0</td>
+      <td>56</td>
+      <td>17</td>
+      <td>0.03</td>
+      <td>3</td>
+      <td>True</td>
+      <td>3.9</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7060077</td>
+      <td>146.6</td>
+      <td>22.8</td>
+      <td>2024-01-24T06:13:56Z</td>
+      <td>4.0</td>
+      <td>58</td>
+      <td>97</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240123_170724_19_24bc</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>POLYGON ((-106.03646 40.70049, -106.09005 40.5...</td>
+      <td>2024-01-16T17:07:00.243012Z</td>
+      <td>0</td>
+      <td>40</td>
+      <td>1</td>
+      <td>0.03</td>
+      <td>3</td>
+      <td>True</td>
+      <td>3.9</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7045035</td>
+      <td>147.8</td>
+      <td>21.6</td>
+      <td>2024-01-17T09:58:34Z</td>
+      <td>5.0</td>
+      <td>56</td>
+      <td>97</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240116_170700_24_24b0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>POLYGON ((-105.84943 40.62474, -105.89752 40.4...</td>
+      <td>2024-01-16T17:49:47.733879Z</td>
+      <td>0</td>
+      <td>47</td>
+      <td>12</td>
+      <td>0.04</td>
+      <td>4</td>
+      <td>True</td>
+      <td>3.5</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7045173</td>
+      <td>158.1</td>
+      <td>25.5</td>
+      <td>2024-01-17T05:31:17Z</td>
+      <td>5.0</td>
+      <td>54</td>
+      <td>96</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240116_174947_73_2483</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>POLYGON ((-105.8839 40.65978, -105.93455 40.47...</td>
+      <td>2024-01-16T17:01:56.418635Z</td>
+      <td>0</td>
+      <td>50</td>
+      <td>6</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>True</td>
+      <td>3.9</td>
+      <td>0</td>
+      <td>...</td>
+      <td>7045016</td>
+      <td>147.5</td>
+      <td>21.7</td>
+      <td>2024-01-17T05:37:04Z</td>
+      <td>3.5</td>
+      <td>53</td>
+      <td>100</td>
+      <td>0.000100</td>
+      <td>100.000000</td>
+      <td>20240116_170156_41_24c1</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 32 columns</p>
+</div></div>
+</div>
+<p>We can also save the results of this search to a csv file for later reference.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">search_results_gdf</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;./example_images/my_images.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>To submit an order to the Planet API for the images we want, we will need to grab the item IDs from one column in the search results GeoDataFrame.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">id_list</span> <span class="o">=</span> <span class="n">search_results_gdf</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>  <span class="c1"># get item IDs as a list</span>
+<span class="n">id_list</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;20240130_174824_24_2484&#39;,
+ &#39;20240127_174951_95_247d&#39;,
+ &#39;20240127_174251_03_227a&#39;,
+ &#39;20240127_174248_99_227a&#39;,
+ &#39;20240123_170724_19_24bc&#39;,
+ &#39;20240116_170700_24_24b0&#39;,
+ &#39;20240116_174947_73_2483&#39;,
+ &#39;20240116_170156_41_24c1&#39;]
+</pre></div></div>
+</div>
+<p>Now, submit the order:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_url</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">download</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="n">id_list</span><span class="p">,</span> <span class="nb">filter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Submitted a total of 8 image ids: accepted a total of 8 ids
+Order URL: https://api.planet.com/compute/ops/orders/v2/6ac34a8c-a2a3-453b-88d4-d9679e0f4087
+</pre></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">order_url</span></code> returned by this function is where we’ll download our images from.</p>
+<p>The download function below will try to download the images, but if they’re not yet ready, it will wait 60 seconds before tyring again. It can take about 3-5 minutes for an order of about 10 images to be prepared before being available for download.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify the directory you&#39;d like to save your downloaded images to</span>
+<span class="n">out_dirpath</span> <span class="o">=</span> <span class="s2">&quot;./example_images&quot;</span>
+
+<span class="n">ps</span><span class="o">.</span><span class="n">download</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="n">order_url</span><span class="p">,</span> <span class="n">out_dirpath</span><span class="o">=</span><span class="s2">&quot;./example_images&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Attempting to download
+data not ready yet, this was attempt number 1
+will automatically try again in 60 seconds
+data not ready yet, this was attempt number 2
+will automatically try again in 60 seconds
+data not ready yet, this was attempt number 3
+will automatically try again in 60 seconds
+data not ready yet, this was attempt number 4
+will automatically try again in 60 seconds
+data not ready yet, this was attempt number 5
+will automatically try again in 60 seconds
+data not ready yet, this was attempt number 6
+will automatically try again in 60 seconds
+data not ready yet, this was attempt number 7
+will automatically try again in 60 seconds
+data not ready yet, this was attempt number 8
+will automatically try again in 60 seconds
+12 items to download
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_174947_73_2483_metadata.json to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_174947_73_2483_metadata.json
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_174947_73_2483_3B_udm2_clip.tif to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_174947_73_2483_3B_udm2_clip.tif
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_174947_73_2483_3B_AnalyticMS_metadata_clip.xml to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_174947_73_2483_3B_AnalyticMS_metadata_clip.xml
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_174947_73_2483_3B_AnalyticMS_SR_clip.tif to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_174947_73_2483_3B_AnalyticMS_SR_clip.tif
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_170156_41_24c1_metadata.json to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_170156_41_24c1_metadata.json
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_170156_41_24c1_3B_udm2_clip.tif to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_170156_41_24c1_3B_udm2_clip.tif
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_170156_41_24c1_3B_AnalyticMS_metadata_clip.xml to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_170156_41_24c1_3B_AnalyticMS_metadata_clip.xml
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_170156_41_24c1_3B_AnalyticMS_SR_clip.tif to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240116_170156_41_24c1_3B_AnalyticMS_SR_clip.tif
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240123_170724_19_24bc_metadata.json to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240123_170724_19_24bc_metadata.json
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240123_170724_19_24bc_3B_udm2_clip.tif to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240123_170724_19_24bc_3B_udm2_clip.tif
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240123_170724_19_24bc_3B_AnalyticMS_metadata_clip.xml to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240123_170724_19_24bc_3B_AnalyticMS_metadata_clip.xml
+downloading 6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240123_170724_19_24bc_3B_AnalyticMS_SR_clip.tif to example_images/6ac34a8c-a2a3-453b-88d4-d9679e0f4087/PSScene/20240123_170724_19_24bc_3B_AnalyticMS_SR_clip.tif
+Completed downloads
+</pre></div></div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../training_data.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Creating Training Data</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="quick_start.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Quick Start</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, DSHydro
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Search and Download</a><ul>
+<li><a class="reference internal" href="#Searching-for-Planet-imagery">Searching for Planet imagery</a></li>
+<li><a class="reference internal" href="#Download-Planet-imagery">Download Planet imagery</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=d53d79bc"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>
