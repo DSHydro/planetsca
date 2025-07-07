@@ -2,7 +2,7 @@
 
 **PlanetSCA** is an open-source Python library for mapping snow-covered areas
 (SCA) from high-resolution PlanetScope images using a Random Forest model.
-PlanetScope images can be accessed at [Planet.com](planet.com)
+PlanetScope images can be accessed at [Planet.com](planet.com).
 
 This package was developed from
 [original work by Kehan Yang and others](#citations).
@@ -31,9 +31,9 @@ describing the model**:
 
 Citing PlanetSCA:
 
-1. the name of the author (Chiu et al.), 2 the title of the software or code
-   (planetsca),
-2. the version number, the publication date and the unique identifier (PID)
+1. the name of the author (Chiu et al.),
+2. the title of the software or code (planetsca),
+3. the version number, the publication date and the unique identifier (PID)
 
 Citing the original study:
 
