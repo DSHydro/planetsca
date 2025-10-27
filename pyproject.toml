@@ -57,7 +57,10 @@ Homepage = "https://test.pypi.org/project/PyPlanetSCA/#description"
 Repository = "https://github.com/DSHydro/PyPlanetSCA-Python-Library"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/planetsca"]
+only-include = ["src/planetsca"]
+
+[tool.hatch.build.targets.wheel.sources]
+"src" = ""
 
 [tool.hatch.build.targets.sdist]
 exclude = [
