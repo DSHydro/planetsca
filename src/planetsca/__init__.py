@@ -1,4 +1,4 @@
-from . import download, predict, search, train
+from . import download, predict, search, simplify_aoi, train
 from .version import version as __version__
 
 __all__ = [
