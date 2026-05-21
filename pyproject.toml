@@ -24,7 +24,9 @@ dependencies = [
     "fiona",
     "skl2onnx",
     "onnxruntime",
-
+    "scipy",
+    "rioxarray",
+    "xarray",
 ]
 requires-python = ">=3.8"
 authors = [

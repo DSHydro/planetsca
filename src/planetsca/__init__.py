@@ -1,4 +1,4 @@
-from . import download, predict, search, simplify_aoi, train
+from . import download, post_process, predict, search, simplify_aoi, train, validate
 from .version import version as __version__
 
 __all__ = [
@@ -8,4 +8,6 @@ __all__ = [
     "predict",
     "search",
     "simplify_aoi",
+    "post_process",
+    "validate",
 ]
