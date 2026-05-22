@@ -148,10 +148,18 @@ def calculate_pixel_buffer(
     with rio.open(smaller_raster_path) as smaller_src:
         smaller_bounds = smaller_src.bounds
 
-    buffer_left_px = int(round(abs((buff_bounds[0] - smaller_bounds[0]) / buff_transform[0])))
-    buffer_bottom_px = int(round(abs((buff_bounds[1] - smaller_bounds[1]) / buff_transform[4])))
-    buffer_right_px = int(round(abs((buff_bounds[2] - smaller_bounds[2]) / buff_transform[0])))
-    buffer_top_px = int(round(abs((buff_bounds[3] - smaller_bounds[3]) / buff_transform[4])))
+    buffer_left_px = int(
+        round(abs((buff_bounds[0] - smaller_bounds[0]) / buff_transform[0]))
+    )
+    buffer_bottom_px = int(
+        round(abs((buff_bounds[1] - smaller_bounds[1]) / buff_transform[4]))
+    )
+    buffer_right_px = int(
+        round(abs((buff_bounds[2] - smaller_bounds[2]) / buff_transform[0]))
+    )
+    buffer_top_px = int(
+        round(abs((buff_bounds[3] - smaller_bounds[3]) / buff_transform[4]))
+    )
 
     return buffer_left_px, buffer_right_px, buffer_top_px, buffer_bottom_px
 
@@ -191,7 +199,9 @@ def basin_masking(
     cropped_stack = np.zeros((t, new_y, new_x), dtype=arr.dtype)
     for i in range(t):
         masked = np.where(basin_mask == 1, arr[i], np.nan)
-        cropped_stack[i] = masked[buffer_top : y - buffer_bottom, buffer_left : x - buffer_right]
+        cropped_stack[i] = masked[
+            buffer_top : y - buffer_bottom, buffer_left : x - buffer_right
+        ]
     return cropped_stack
 
 
@@ -302,7 +312,9 @@ def qaqc_spatial_temp(
     stacked_data = temporal_median_filter(stacked_data, chm_mask[0], 1, window_size=5)
     stacked_data = temporal_median_filter(stacked_data, chm_mask[0], 0, window_size=5)
     stacked_data = fill_nodata(stacked_data)
-    stacked_data = basin_masking(stacked_data, basin_mask, buff_raster_fn, small_raster_fn)
+    stacked_data = basin_masking(
+        stacked_data, basin_mask, buff_raster_fn, small_raster_fn
+    )
     return stacked_data
 
 
@@ -343,7 +355,9 @@ def qaqc_spatial(
     stacked_data = masked_convolution(
         stacked_data, chm_mask[0], create_circular_kernel(radius), threshold_percent
     )
-    stacked_data = basin_masking(stacked_data, basin_mask, buff_raster_fn, small_raster_fn)
+    stacked_data = basin_masking(
+        stacked_data, basin_mask, buff_raster_fn, small_raster_fn
+    )
     return stacked_data
 
 
@@ -378,7 +392,9 @@ def qaqc_temp(
     stacked_data = temporal_median_filter(stacked_data, chm_mask[0], 1, window_size=5)
     stacked_data = temporal_median_filter(stacked_data, chm_mask[0], 0, window_size=5)
     stacked_data = fill_nodata(stacked_data)
-    stacked_data = basin_masking(stacked_data, basin_mask, buff_raster_fn, small_raster_fn)
+    stacked_data = basin_masking(
+        stacked_data, basin_mask, buff_raster_fn, small_raster_fn
+    )
     return stacked_data
 
 

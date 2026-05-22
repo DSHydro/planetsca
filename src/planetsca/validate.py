@@ -442,8 +442,11 @@ def plot_model_comparison(
         )
 
         if model1_file and model2_file:
+
             def _load_clip(filepath):
-                sca = rioxarray.open_rasterio(filepath, all_touched=False, drop=True, masked=True)
+                sca = rioxarray.open_rasterio(
+                    filepath, all_touched=False, drop=True, masked=True
+                )
                 sca.values = np.where(np.isnan(sca.values), 0, sca.values)
                 sca = sca.rio.clip(basin.geometry.values, crs=basin.crs, drop=True)
                 if rgi_mask is not None:
@@ -505,8 +508,12 @@ def validation_tif_4class(
     )
     chm_binary = chm_tif.squeeze()
 
-    assert aso_binary.shape == chm_binary.shape, "ASO and CHM rasters must have the same shape"
-    assert aso_binary.rio.crs == chm_binary.rio.crs, "ASO and CHM rasters must have the same CRS"
+    assert (
+        aso_binary.shape == chm_binary.shape
+    ), "ASO and CHM rasters must have the same shape"
+    assert (
+        aso_binary.rio.crs == chm_binary.rio.crs
+    ), "ASO and CHM rasters must have the same CRS"
     assert (
         aso_binary.rio.transform() == chm_binary.rio.transform()
     ), "ASO and CHM rasters must have the same transform"
