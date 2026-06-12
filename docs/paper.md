@@ -13,6 +13,16 @@ tags:
   - forest gaps
   - mountain meadows
   - water resource management
+keywords:
+  - snow cover area
+  - machine learning
+  - Planet
+  - remote sensing
+  - hydrology
+  - ecology
+  - forest gaps
+  - mountain meadows
+  - water resource management
 authors:
   - name: Ian Chiu
     orcid: 0009-0001-0231-5626
@@ -50,6 +60,11 @@ affiliations:
     index: 5
 date: 10 October 2025
 bibliography: paper.bib
+repository: "https://github.com/DSHydro/planetsca"
+documentation_url: "https://dshydro.github.io/planetsca/"
+issue_tracker: "https://github.com/DSHydro/planetsca/issues"
+archive_doi: "10.5281/zenodo.17380192"
+license: "MIT"
 ---
 
 # Summary
@@ -72,11 +87,13 @@ terrain, addressing a critical need for accurate snow cover information to
 support water resource management, ecological research, and climate studies.
 
 PlanetSCA includes functionality such as: data download and search, model
-training, snow-covered area map generation, and AOI simplification. Sample data
-and a pre-trained model are provided to demonstrate the library's functions.
-PlanetSCA requires users to have an account with Planet Data Explore
-(https://www.planet.com/explorer/) and an API key to utilize its search and
-download capabilities. Limited access to free PlanetScope images is available at
+training, snow-covered area map generation, AOI simplification, canopy-aware
+post-processing of snow-covered area (SCA) time series, and validation against
+airborne reference snow surveys. Sample data and a pre-trained model are
+provided to demonstrate the library's functions. PlanetSCA requires users to
+have an account with Planet Data Explorer (https://www.planet.com/explorer/)
+and an API key to utilize its search and download capabilities. Limited access
+to free PlanetScope images is available at
 https://www.planet.com/industries/education-and-research/.
 
 # Statement of Need
@@ -113,6 +130,24 @@ functions for PlanetScope imagery. This functionality positions PlanetSCA as a
 valuable tool for snow cover mapping and snow and ecology research in regions
 without extensive ground-based snow observations, where m-scale resolution data
 are needed.
+
+A persistent challenge in satellite-based snow detection is the obstruction of
+the sensor's view by forest canopy, which can cause snow-covered pixels beneath
+dense tree cover to be systematically misclassified as snow-free. PlanetSCA
+addresses this through a `post_process` module that provides canopy-aware
+spatial infilling of SCA predictions using a canopy height model (CHM).
+Forested pixels classified as snow-free are reclassified as snow-covered when a
+sufficient fraction of their open-area neighbors are snow-covered, with
+configurable kernel radius and threshold. The module further provides temporal
+median filtering applied independently to forested and open pixels, nodata
+carry-forward filling, basin-level masking, and computation of
+day-since-disappearance (DSD) dates for characterizing snowmelt timing. A
+complementary `validate` module supports quantitative evaluation of PlanetSCA
+predictions against Airborne Snow Observatory (ASO) lidar-derived reference
+data, computing standard binary classification metrics (precision, recall,
+F1-score, accuracy, and Cohen's kappa) and producing a four-class
+snow-by-canopy validation raster for stratified assessment of model performance
+in forested versus open terrain.
 
 # Acknowledgements
 
