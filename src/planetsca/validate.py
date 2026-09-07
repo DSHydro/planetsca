@@ -508,15 +508,15 @@ def validation_tif_4class(
     )
     chm_binary = chm_tif.squeeze()
 
-    assert (
-        aso_binary.shape == chm_binary.shape
-    ), "ASO and CHM rasters must have the same shape"
-    assert (
-        aso_binary.rio.crs == chm_binary.rio.crs
-    ), "ASO and CHM rasters must have the same CRS"
-    assert (
-        aso_binary.rio.transform() == chm_binary.rio.transform()
-    ), "ASO and CHM rasters must have the same transform"
+    assert aso_binary.shape == chm_binary.shape, (
+        "ASO and CHM rasters must have the same shape"
+    )
+    assert aso_binary.rio.crs == chm_binary.rio.crs, (
+        "ASO and CHM rasters must have the same CRS"
+    )
+    assert aso_binary.rio.transform() == chm_binary.rio.transform(), (
+        "ASO and CHM rasters must have the same transform"
+    )
 
     combined = np.full(aso_binary.shape, np.nan, dtype=np.float32)
     combined[(aso_binary == 0) & (chm_binary == 1)] = 0
