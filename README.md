@@ -13,6 +13,8 @@ mapping SCA in PlanetScope imagery, and
 [sample data](https://huggingface.co/datasets/geo-smart/planetsca_datasets) to
 demonstrate the library's functions.
 
+This package is currently in use [STUDY](link)
+
 The search and download functions require you to have an account with Planet and
 an [API key](https://developers.planet.com/quickstart/apis/#find-your-api-key).
 
