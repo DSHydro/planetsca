@@ -364,6 +364,7 @@ def qaqc_temp(
     )
     return stacked_data
 
+
 def find_last_consecutive_ones_after_zero(arr: np.ndarray) -> list:
     """
     Find the index of the last date in the longest run of consecutive snow-present
@@ -432,7 +433,7 @@ def fill_DSDdates(
         for i in range(dsd.shape[1]):
             time_index = dsd[j, i]
             temp[j, i] = nodata_ref[time_index, j, i]
-    
+
     # determine where/when dsd occurred on a bad observation pixel and account for that in the uncertainty
     filled_y, filled_x = np.where(temp == 2)
     if len(filled_y) > 0:
@@ -450,6 +451,7 @@ def fill_DSDdates(
     dsd_uncertain = dsd_date - temp
     dsd_date = np.ceil((dsd_date + temp) / 2)
     return dsd_date, dsd_uncertain
+
 
 def DSD_index(year: int, files: List[str]) -> Tuple[np.ndarray, np.ndarray]:
     """
@@ -501,6 +503,7 @@ def DSD_index(year: int, files: List[str]) -> Tuple[np.ndarray, np.ndarray]:
     daydiff = np.array(daydiff)
     # print(daydiff)
     return stacked_data, daydiff
+
 
 def find_spurious_0(arr: np.ndarray) -> List[Tuple[int, int, int]]:
     """
@@ -666,9 +669,7 @@ def process_DSD(
         # load the processed snow cover files
         files = sorted(
             glob.glob(os.path.join(data_direc, str(testing_year) + "*SCA.tif"))
-        )[
-            starting_array[year_index] :
-        ]
+        )[starting_array[year_index] :]
 
         stacked_data, daydiff = DSD_index(testing_year, files)
 
@@ -681,9 +682,7 @@ def process_DSD(
 
         # save the data if this is a modeling year
         if testing_year == year_select:
-            processed_direc = os.path.join(
-                data_direc, "processed_" + str(year_select)
-            )
+            processed_direc = os.path.join(data_direc, "processed_" + str(year_select))
             os.makedirs(processed_direc, exist_ok=True)
             np.save(os.path.join(processed_direc, "DSD_stacked.npy"), stacked_data)
             np.save(os.path.join(processed_direc, "DSD_daydiff.npy"), daydiff)
