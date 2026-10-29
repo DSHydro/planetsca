@@ -55,7 +55,11 @@ def check_inputs(
     elif isinstance(planet_path, str):
         # if planet_path is a directory, then find all images with 'SR' flag, meaning surface reflectance data
         if os.path.isdir(planet_path):
-            file_list = glob.glob(planet_path + "/**/*SR*.tif", recursive=True)
+            file_list = [
+                f
+                for f in glob.glob(planet_path + "/**/*SR*.tif", recursive=True)
+                if not f.endswith("_SCA.tif")
+            ]
         # otherwise we are working with a single planet image
         elif os.path.isfile(planet_path):
             file_list = [planet_path]
@@ -232,7 +236,11 @@ def check_inputs_onnx(
     elif isinstance(planet_path, str):
         # if planet_path is a directory, then find all images with 'SR' flag, meaning surface reflectance data
         if os.path.isdir(planet_path):
-            file_list = glob.glob(planet_path + "/**/*SR*.tif", recursive=True)
+            file_list = [
+                f
+                for f in glob.glob(planet_path + "/**/*SR*.tif", recursive=True)
+                if not f.endswith("_SCA.tif")
+            ]
         # otherwise we are working with a single planet image
         elif os.path.isfile(planet_path):
             file_list = [planet_path]
