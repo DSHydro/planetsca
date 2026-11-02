@@ -711,3 +711,39 @@ def process_DSD(
         dsd_uncertain_saver[year_index, :, :] = dsd_uncertain
 
     return dsd_saver, dsd_anomaly_saver, dsd_uncertain_saver
+
+
+def process_SnowClass(dsd_anomaly_saver: np.ndarray) -> np.ndarray:
+    """
+    Classify pixels into four equal-area snow classes (quartiles) from the
+    multi-year average Date of Snow Disappearance (DSD) anomaly.
+
+    Parameters
+    ----------
+        dsd_anomaly_saver: np.ndarray
+            3D array of shape ``(len(years), y, x)`` of annual median-normalized
+            DSD anomalies in days (as returned by ``process_DSD``)
+
+    Returns
+    -------
+        data_classes: np.ndarray
+            2D float array of snow classes from 0 (earliest snow disappearance,
+            0-25th percentile) to 3 (latest snow disappearance, 75th-100th
+            percentile), split at the 25th, 50th, and 75th percentiles; NaN where
+            the anomaly is NaN in any year
+    """
+    # compute the multi-year average DSD anomaly per pixel (NaN in any year yields NaN)
+    data = np.mean(dsd_anomaly_saver, axis=0)
+
+    # compute the 25th, 50th, and 75th percentile breaks to divide the domain into four equal-area snow classes
+    breaks = np.nanpercentile(data, [25, 50, 75])
+    print(breaks)
+    # assign each pixel to a snow class (0 = earliest melt-out, 3 = latest melt-out)
+    data_classes = np.empty(data.shape)
+    data_classes[:] = 0
+    data_classes[data > breaks[0]] = 1
+    data_classes[data > breaks[1]] = 2
+    data_classes[data > breaks[2]] = 3
+    data_classes[np.isnan(data)] = np.nan
+
+    return data_classes

@@ -19,6 +19,7 @@ Welcome to PlanetSCA's documentation
    training_data
    examples/train_predict
    examples/convert_model
+   examples/swe_reconstruction
 
 .. toctree::
    :caption: API Reference
