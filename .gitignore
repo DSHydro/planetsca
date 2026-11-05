@@ -94,3 +94,6 @@ outputs
 
 # Local Package
 version.py
+
+# Downloaded example images
+docs/examples/example_images/
