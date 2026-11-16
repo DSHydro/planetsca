@@ -1,0 +1,16 @@
+{
+    "download": 0.182,
+    "examples/convert_model": 0.134,
+    "examples/quick_start": 0.073,
+    "examples/search_download": 0.167,
+    "examples/swe_reconstruction": 0.18,
+    "examples/train_predict": 0.117,
+    "index": 0.009,
+    "installation": 0.011,
+    "paper": 0.012,
+    "predict": 0.061,
+    "search_module": 0.158,
+    "simplify_aoi": 0.049,
+    "train": 0.083,
+    "training_data": 0.015
+}
